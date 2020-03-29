@@ -1,0 +1,19 @@
+{
+  "name": "one-more-lamore",
+  "version": "0.1.0",
+  "description": "Family Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlamoreaux/one-more-lamore.git"
+  },
+  "author": "jlamoreaux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlamoreaux/one-more-lamore/issues"
+  },
+  "homepage": "https://github.com/jlamoreaux/one-more-lamore#readme"
+}
