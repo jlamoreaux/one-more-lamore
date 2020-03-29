@@ -1,21 +1,11 @@
-const http = require('http');
+// const http = require('http');
 const express = require('express');
-
-const hostname = '127.0.0.1';
-const port = 3000;
+const routes = require('./routes/index');
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('One More Lamore!!!');
-});
+app.use('/', routes);
 
-const server = app.listen(3000, () => console.log(`Server ready, running at http://${hostname}:${port}/`));
-
-process.on('SIGTERM', () => {
-    server.close(() => {
-        console.log('Process terminated')
-    })
-})
+module.exports = app;
 
 // const server = http.createServer((req, res) => {
 //     res.statusCode = 200;
