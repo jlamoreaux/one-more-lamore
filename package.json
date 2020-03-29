@@ -2,7 +2,7 @@
   "name": "one-more-lamore",
   "version": "0.1.0",
   "description": "Family Website",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jlamoreaux/one-more-lamore/issues"
   },
-  "homepage": "https://github.com/jlamoreaux/one-more-lamore#readme"
+  "homepage": "https://github.com/jlamoreaux/one-more-lamore#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.5"
+  }
 }
