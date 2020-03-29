@@ -1,7 +1,4 @@
 const app = require('./app');
-const db = require('./mongo.js');
-
-db.dbInit();
 
 const hostname = '127.0.0.1';
 const port = 3000;
