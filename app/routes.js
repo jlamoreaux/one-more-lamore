@@ -2,7 +2,7 @@
 const path = require('path');
 const express = require('express');
 
-module.exports = function (app, passport, bodyParser) {
+module.exports = function (app, passport) {
     app.get("/", (req, res) => {
         res.render("index", { title: "Home" });
     });
@@ -16,7 +16,7 @@ module.exports = function (app, passport, bodyParser) {
         res.render("register", { title: "Sign Up" });
     })
 
-    app.get('/success', (req, res) => res.send("Welcome " + req.query.username + "!!"));
+    app.get('/success', (req, res) => res.send("Welcome " + req.query.name + "!!"));
 
     app.get('/error', (req, res) => {
         res.send("error logging in")
@@ -25,8 +25,17 @@ module.exports = function (app, passport, bodyParser) {
     app.post('/authenticate',
         passport.authenticate('local', { failureRedirect: '/error' }),
         function (req, res) {
-            res.redirect('/success?username=' + req.user.username);
+            res.redirect('/success?name=' + req.user.firstname);
         }
+    );
+
+    app.post('/registration',
+        passport.authenticate('local-signup',
+            {
+                failureRedirect: '/register',
+                successRedirect: '/'
+            }
+        )
     );
 }
 

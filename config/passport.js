@@ -5,28 +5,26 @@ const User = require('../app/models/user');
 
 module.exports = function (passport) {
 
-    // const Schema = mongoose.Schema;
-    // const UserDetail = new Schema({
-    //     username: String,
-    //     password: String
-    // });
-    // const UserDetails = mongoose.model('userInfo', UserDetail, 'userInfo');
+    // INITIALIZE SESSION
 
-
-    passport.serializeUser(function (user, cb) {
-        cb(null, user.id);
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
     });
 
-    passport.deserializeUser(function (id, cb) {
-        User.findById(id, function (err, user) {
-            cb(err, user);
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+            done(err, user);
         });
     });
 
+    
+    // LOCAL LOGIN
+
     passport.use(new LocalStrategy(
-        function (username, password, done) {
+        function (email, password, done) {
             User.findOne({
-                username: username
+                username : email
             }, function (err, user) {
                 if (err) {
                     console.log(err);
@@ -34,7 +32,7 @@ module.exports = function (passport) {
                 }
 
                 if (!user) {
-                    console.log('user does not exist')
+                    console.log(`user "${email}" does not exist`)
                     return done(null, false);
                 }
 
@@ -47,21 +45,40 @@ module.exports = function (passport) {
         }
     ));
 
-    // passport.use('local-signup', new LocalStrategy({ passReqToCallback: true },
-    //     function (user) {
-    //         User.findOne({
-    //             username: user.username
-    //         }, function (err, user) {
-    //             if (err) {
-    //                 console.log(err);
-    //                 return done(err);
-    //             }
+   
+    // LOCAL SIGN UP
 
-    //             if (user) {
-    //                 return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-    //             } else {
-    //             }
-    //         })
-    //     })
-    // )   
+    passport.use('local-signup', new LocalStrategy({
+    },
+        function (user, done) {
+            User.findOne({
+                'local.email': user.email
+            }, function (err, user) {
+                if (err) {
+                    console.log(err);
+                    return done(err);
+                }
+
+                if (user) {
+                    return done(null, false, console.log('signupMessage', 'That email is already taken.'));
+                } else {
+                    // if there is no user with that email
+                    // create the user
+                    let newUser = new User();
+
+                    // set the user's local credentials
+                    newUser.email = email;
+                    newUser.password = newUser.generateHash(password); // use the generateHash function in our user model
+
+                    // save the user
+                    newUser.save(function (err) {
+                        console.log('saving user');
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
+            })
+        })
+    )   
 }

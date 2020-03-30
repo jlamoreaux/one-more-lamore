@@ -35,7 +35,7 @@ app.use(passport.session());
 
 
 // Routes
-require('./routes')(app, passport, bodyParser);
+require('./routes')(app, passport);
 
 // Exports
 module.exports = app;
