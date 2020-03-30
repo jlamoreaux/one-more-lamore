@@ -4,9 +4,9 @@ block layout-content
   div.View
     h1.Banner Login
 
-    form.login-form
+    form.login-form(action="/authenticate" method="post")
         label.login-label(for='username') Username
-            input#username(type='textbox')
+            input#username(type='textbox' name='username')
         label.login-label(for="password") Password
-            input#password(type="password")
+            input#password(type="password" name='password')
         input.submit(type="submit" value='Login')
