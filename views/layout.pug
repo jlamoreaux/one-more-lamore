@@ -1,15 +1,13 @@
-block variables
-include mixins/main.pug
 doctype html
 html
   head
     meta(charset="utf-8")
-    link(rel="shortcut icon", href="/favicon.ico")
+    //- link(rel="shortcut icon", href="/favicon.ico")
     
     meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
     meta(name="theme-color", content="#000000")
     meta(author="jlamoreaux")
-    title One More Lamore | #{title}
+    title= `${title} | ${h.siteName}`
 
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
 
@@ -18,7 +16,17 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous")
 
   body
-    header
-      include includes/nav.pug
-    div#root
-      block layout-content
+    block header
+      include mixins/_link
+      header.top
+        nav.nav
+          a(class="navbar-brand" href="/") One More Lamore
+          button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+              span(class="navbar-toggler-icon")
+          div(class="expand navbar-light navbar-expand-sm" id="navbarNav")
+              ul.navbar-nav
+                  each item in h.menu
+                      li.navbar-item
+                          +link(item.title, item.slug )(class= 'nav-link')
+    .content
+    block layout-content

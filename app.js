@@ -1,28 +1,37 @@
 const express = require('express');
+const session = require('express-session');
+const expressValidator = require('express-validator');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const path = require('path');
 const flash = require('connect-flash');
 const helpers = require('./helpers');
+const routes = require('./routes');
 
 
-// Module imports 
-
-// const configDB = require('./config/database.js');
-require('./config/passport')(passport); // pass passport for configuration
-
-
-// Initialize Services
-
-// mongoose.connect(configDB.url);
-
-// Express
+/* 
+Express
+*/
 
 const app = express();
+app.set("views", path.join("./views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join('./public')));
+
+app.use(expressValidator());
+
+app.use(session({
+    secret: process.env.SECRET,
+    key: process.env.KEY,
+    resave: false,
+    saveUninitialized: false,
+}));
+
+// Flash errors 
+app.use(flash());
 
 app.use((req, res, next) => {
     res.locals.h = helpers;
@@ -34,16 +43,11 @@ app.use((req, res, next) => {
 
 app.unsubscribe(bodyParser.urlencoded({ extended: true }));
 
-app.set("views", path.join("./views"));
-app.set("view engine", "pug");
-app.use(express.static(path.join(__dirname, "public")));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-// Routes
-require('./routes')(app, passport);
+app.use('/', routes);
 
 // Exports
 module.exports = app;

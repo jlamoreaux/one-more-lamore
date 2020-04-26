@@ -14,7 +14,7 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `One More Lamore(aux)`;
 
 exports.menu = [
-    { slug: '/albums', title: 'Albums', icon: 'photo', },
-    { slug: '/stories', title: 'Stories', icon: 'stories', },
+    { slug: '/gallery', title: 'Gallery', icon: 'photo', },
+    { slug: '/updates', title: 'Updates', icon: 'stories', },
     { slug: '/registry', title: 'Registry', icon: 'gift', },
 ];
