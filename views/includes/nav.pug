@@ -1,0 +1,10 @@
+- let registry = 'https://www.babylist.com/penny-jordan-lamoreaux'
+nav(classes=navClasses)
+    a(class="navbar-brand" href="/") One More Lamore
+    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+    div(class="expand navbar-light navbar-expand-sm" id="navbarNav")
+        ul.navbar-nav
+            each link in [['Gallery', '/gallery'], ['Updates', '/journal'], ['Guest Book',  '/guestbook'], ['Registry', registry ]]
+                li.navbar-item
+                    +link(link[0], link[1])(class= 'nav-link')

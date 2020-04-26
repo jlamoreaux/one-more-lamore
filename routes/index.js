@@ -1,6 +1,8 @@
 // Routing
-const path = require('path');
-const express = require('express');
+// const path = require('path');
+// const express = require('express');
+const googleAPI = 'https://photoslibrary.googleapis.com/v1/albums';
+const api_helper = require('../models/api-helper');
 
 module.exports = function (app, passport) {
     app.get("/", (req, res) => {
@@ -37,5 +39,16 @@ module.exports = function (app, passport) {
             }
         )
     );
+
+    app.get('/albums', (req, res) => {
+        api_helper()
+            .then(response => {
+                res.json(response)
+                console.log(response)
+            })
+            .catch(error => {
+                res.send(error)
+            })
+    })
 }
 
