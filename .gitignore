@@ -2,5 +2,5 @@ node_modules
 build
 npm-debug.log
 data
-*.env
+config.env
 .DS_Store
