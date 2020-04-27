@@ -1,9 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const mainController = require('../controllers/mainController');
+const { catchErrors } = require('../handlers/errorHandlers');
 
+router.get("/", catchErrors(mainController.homepage));
 
-router.get("/", mainController.homepage);
+router.get("/gallery", catchErrors(mainController.getGalleries));
+router.get("/gallery/create", mainController.addGallery);
+
+router.get("/gallery/:slug", catchErrors(mainController.getGallery));
+
+router.post('/gallery/add',
+    mainController.upload,
+    catchErrors(mainController.resize),
+    catchErrors(mainController.createGallery)
+);
+router.post('/gallery/update/:slug',
+    mainController.upload,
+    catchErrors(mainController.resize),
+    catchErrors(mainController.updateGallery)
+);
+
 
 //     app.get("/login", (req, res) => {
 //         // res.sendFile('auth.html', { root: './views' })

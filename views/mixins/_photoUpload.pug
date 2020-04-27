@@ -1,0 +1,18 @@
+mixin photoUpload
+    form(action=`/gallery/add` method="POST" class="card" enctype="multipart/form-data")
+            label(for="name") Gallery Name
+            input(type="text" name="name" value="")
+            label(for="description") Description
+            textarea(name="description")
+            //- Image upload
+            label(for="photos")
+                input(type="file" name="photos" id="files" accept="image/gif, image/png, image/jpeg" multiple)
+                output#list
+
+            - const choices = ['Jordan', 'Penny', 'Eisley', 'Meetings & Assemblies']
+            ul.tags
+                each choice in choices
+                    .tag.tag__choice
+                        input(type="checkbox" id=choice value=choice name="tags")
+                        label(for=choice)= choice
+            input(type="submit" value="Save" class="button")

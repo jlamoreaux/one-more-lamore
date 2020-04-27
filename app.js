@@ -1,16 +1,19 @@
 const express = require('express');
 const session = require('express-session');
 const expressValidator = require('express-validator');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const path = require('path');
 const flash = require('connect-flash');
 const helpers = require('./helpers');
 const routes = require('./routes');
+const errorHandlers = require('./handlers/errorHandlers')
 
 
 /* 
-Express
+    Express
 */
 
 const app = express();
@@ -28,9 +31,9 @@ app.use(session({
     key: process.env.KEY,
     resave: false,
     saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-// Flash errors 
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -47,7 +50,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+/*
+    Routing
+*/
 app.use('/', routes);
+// If that above routes didnt work, we 404 them and forward to error handler
+app.use(errorHandlers.notFound);
 
 // Exports
 module.exports = app;

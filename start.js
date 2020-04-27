@@ -11,7 +11,7 @@ mongoose.connection.on('error', (err) => {
 
 // Import Models
 
-// TODO: ADD MODELS HERE
+require('./models/Gallery');
 
 
 
@@ -19,8 +19,8 @@ const app = require('./app.js');
 
 app.set('port', process.env.PORT || 3000);
 
-const hostname = '127.0.0.1';
-const port = 3000;
+// const hostname = '127.0.0.1';
+// const port = 3000;
 
 const server = app.listen(app.get('port'), () => {
     console.log(`Express running → PORT ${server.address().port}`);

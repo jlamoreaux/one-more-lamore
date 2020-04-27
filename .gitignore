@@ -4,3 +4,4 @@ npm-debug.log
 data
 config.env
 .DS_Store
+public/gallery
