@@ -1,0 +1,16 @@
+include mixins/tags
+
+mixin blogUpload
+    form(action="/updates/add" method="POST" class="" enctype="multipart/form-data")
+        label(for="title") Title of Post
+        input(type="text" name="title" value="")
+        label(for="headline") Headline
+        input(type="text" name="headline" placeholder="Enter a brief headline here" value="")
+        label(for="photo")
+            input(type="file" name="photos" id="files" accept="image/gif, image/png, image/jpeg")
+            output#list
+        label(for="body")
+        textarea(name="body", cols="30", rows="10")
+        +tags
+        input(type="submit" value="Save" class="button")
+        

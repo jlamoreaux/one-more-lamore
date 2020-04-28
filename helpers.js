@@ -18,3 +18,5 @@ exports.menu = [
     { slug: '/updates', title: 'Updates', icon: 'stories', },
     { slug: '/registry', title: 'Registry', icon: 'gift', },
 ];
+
+exports.tags = ['Jordan', 'Penny', 'Eisley', 'Meetings & Assemblies'];

@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon ./start.js"
+    "watch": "nodemon ./start.js",
+    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "uuid": "^7.0.3"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.2"
   }
 }

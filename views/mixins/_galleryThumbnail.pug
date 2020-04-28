@@ -1,0 +1,6 @@
+mixin galleryThumbnail(gallery)
+    .gallery-thumbnail.thumbnail
+        a(href=`/gallery/${gallery.slug}`)
+            .gallery-thumbnail-inner
+                span #{gallery.name}
+                img(src=`/gallery-images/${gallery.slug}/${gallery.photos[0]}`)

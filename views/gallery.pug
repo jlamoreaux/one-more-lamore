@@ -1,10 +1,10 @@
 extends layout
 
+include mixins/_photoThumbnail
+
 block layout-content
-    h2 #{title}
-    h3 #{description}
+    h2=gallery.name
+    h3=gallery.description
     div.thumbnail-container
-        ul.thumbnails
-            //- each photo in photos
-            //-     li photo
-    a(href='/gallery/create') New Gallery
+        each photo in gallery.photos
+            +photoThumbnail(gallery.slug, photo)

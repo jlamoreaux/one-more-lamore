@@ -1,0 +1,6 @@
+mixin tags
+    ul.tags
+        each tag in h.tags
+            .tag
+                input(type="checkbox" id=tag value=tag name="tags")
+                label(for=tag)= tag

@@ -1,24 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const mainController = require('../controllers/mainController');
+const galleryController = require('../controllers/galleryController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get("/", catchErrors(mainController.homepage));
+router.get("/", galleryController.homepage);
 
-router.get("/gallery", catchErrors(mainController.getGalleries));
-router.get("/gallery/create", mainController.addGallery);
+router.get("/gallery", catchErrors(galleryController.getGalleries));
+router.get("/gallery/create", galleryController.addGallery);
 
-router.get("/gallery/:slug", catchErrors(mainController.getGallery));
+router.get("/gallery/:slug", catchErrors(galleryController.getGallery));
 
 router.post('/gallery/add',
-    mainController.upload,
-    catchErrors(mainController.resize),
-    catchErrors(mainController.createGallery)
+    galleryController.upload,
+    catchErrors(galleryController.resize),
+    catchErrors(galleryController.createGallery)
 );
 router.post('/gallery/update/:slug',
-    mainController.upload,
-    catchErrors(mainController.resize),
-    catchErrors(mainController.updateGallery)
+    galleryController.upload,
+    catchErrors(galleryController.resize),
+    catchErrors(galleryController.updateGallery)
 );
 
 

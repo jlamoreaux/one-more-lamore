@@ -21,13 +21,18 @@ exports.homepage = (req, res) => {
     res.render('index', { title: 'Home' },);
 }
 
+exports.getGalleries = async (req, res) => {
+    const galleries = await Gallery.find();
+    res.render('galleries', { title: 'Galleries', galleries });
+}
+
 exports.addGallery = (req, res) => {
     res.render('addGallery', { title: 'Add Gallery' });
 }
 
 exports.getGallery = async (req, res) => {
     const gallery = await Gallery.findOne({ slug: req.params.slug });
-    res.render('gallery', { title: gallery.name });
+    res.render('gallery', { title: gallery.name, gallery });
 }
 
 exports.upload = multer({ multerOptions }).array('photos', 40);
@@ -53,7 +58,7 @@ exports.resize = async (req, res, next) => {
 
         await photos.resize(800, jimp.AUTO);
 
-        await photos.write(`./public/gallery/${slug(req.body.name)}/${req.body.photos[i]}`);
+        await photos.write(`./public/gallery-images/${slug(req.body.name)}/${req.body.photos[i]}`);
         i++
     });
     console.log(req.body.photos);

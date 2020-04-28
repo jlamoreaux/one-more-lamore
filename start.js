@@ -12,6 +12,7 @@ mongoose.connection.on('error', (err) => {
 // Import Models
 
 require('./models/Gallery');
+require('./models/Blog');
 
 
 
