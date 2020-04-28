@@ -1,0 +1,9 @@
+mixin blogThumbnail(blog)
+    .blog-thumbnail.thumbnail
+        a(href=`/updates/${blog.slug}`)
+            .blog-thumbnail-inner
+                span #{blog.title}
+                if blog.headline
+                    h3=blog.headline
+                if blog.photo
+                    img(src=`/blog-images/${blog.photo}`)

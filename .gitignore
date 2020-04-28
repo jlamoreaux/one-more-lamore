@@ -5,3 +5,4 @@ data
 config.env
 .DS_Store
 public/gallery-images
+public/blog-images

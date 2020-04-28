@@ -9,7 +9,7 @@ const blogSchema = new mongoose.Schema({
         required: 'Please enter a blog title!'
     },
     slug: String,
-    description: {
+    headline: {
         type: String,
         trim: true
     },
@@ -30,7 +30,7 @@ blogSchema.pre('save', function (next) {
         next();
         return;
     }
-    this.slug = slug(this.name);
+    this.slug = slug(this.title);
     next();
 
     // TODO make more resiliant so slugs are unique

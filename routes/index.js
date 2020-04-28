@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const galleryController = require('../controllers/galleryController');
+const blogController = require('../controllers/blogController');
 const { catchErrors } = require('../handlers/errorHandlers');
+
+/*
+    Gallery Routes
+*/
 
 router.get("/", galleryController.homepage);
 
@@ -19,6 +24,21 @@ router.post('/gallery/update/:slug',
     galleryController.upload,
     catchErrors(galleryController.resize),
     catchErrors(galleryController.updateGallery)
+);
+
+/*
+    Blog Routes
+*/
+
+router.get("/updates", catchErrors(blogController.getBlogs));
+router.get("/updates/create", blogController.addBlog);
+
+router.get("/updates/:slug", catchErrors(blogController.getBlog));
+
+router.post("/updates/add",
+    blogController.upload,
+    catchErrors(blogController.resize),
+    catchErrors(blogController.createBlog)
 );
 
 

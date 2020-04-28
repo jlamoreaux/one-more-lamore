@@ -61,7 +61,6 @@ exports.resize = async (req, res, next) => {
         await photos.write(`./public/gallery-images/${slug(req.body.name)}/${req.body.photos[i]}`);
         i++
     });
-    console.log(req.body.photos);
 
     next();
 }
