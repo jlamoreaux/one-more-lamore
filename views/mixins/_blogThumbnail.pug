@@ -1,9 +1,15 @@
 mixin blogThumbnail(blog)
     .blog-thumbnail.thumbnail
-        a(href=`/updates/${blog.slug}`)
+        a.blog-link(href=`/updates/${blog.slug}`)
             .blog-thumbnail-inner
-                span #{blog.title}
-                if blog.headline
-                    h3=blog.headline
-                if blog.photo
-                    img(src=`/blog-images/${blog.photo}`)
+            if blog.photo
+                div.thumbnail-image-container
+                    div.blog-date
+                        span=`${blog.created.getMonth() + 1}.${blog.created.getDate()}`
+                    div.thumbnail-image(style=`background-image: url('/blog-images/${blog.photo}')`)
+        h3.blog-title #{blog.title}
+            if blog.headline
+                h4.blog-headline=blog.headline
+        p.blog-preview=`${blog.body.substring(0, 240)} ...`
+        a.read-more-link(href=`/updates/${blog.slug}`) Read More
+                

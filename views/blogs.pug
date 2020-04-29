@@ -3,7 +3,6 @@ extends layout
 include mixins/_blogThumbnail
 
 block layout-content
-    h2= title
     .blogs
         each blog in blogs
             +blogThumbnail(blog)

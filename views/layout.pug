@@ -29,8 +29,9 @@ html
                   each item in h.menu
                       li.navbar-item
                           +link(item.title, item.slug )(class= 'nav-link')
-    .content
-    block layout-content
+    main.content
+      h2.page-title= title
+      block layout-content
 
     footer
       script(src="/js/preview.js")
