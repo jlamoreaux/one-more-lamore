@@ -19,7 +19,7 @@ require('./models/Blog');
 // Start the app!
 const app = require('./app.js');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT);
 const server = app.listen(app.get('port'), () => {
 	console.log(`Express running → PORT ${server.address().port}`);
 });
