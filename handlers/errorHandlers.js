@@ -16,7 +16,7 @@ exports.catchErrors = (fn) => {
   If we hit a route that is not found, we mark it as 404 and pass it along to the next error handler to display
 */
 exports.notFound = (req, res, next) => {
-  const err = new Error('Not Found');
+  const err = new Error(`Not Found: ${req.path}`);
   err.status = 404;
   next(err);
 };
@@ -52,7 +52,7 @@ exports.developmentErrors = (err, req, res, next) => {
   res.format({
     // Based on the `Accept` http header
     'text/html': () => {
-      res.render('error', errorDetails);
+      res.render('error', { title: errorDetails.status, errorDetails });
     }, // Form Submit, Reload the page
     'application/json': () => res.json(errorDetails) // Ajax call, send JSON back
   });

@@ -3,8 +3,30 @@ extends layout
 include mixins/_photoThumbnail
 
 block layout-content
-    h2=gallery.name
     h3=gallery.description
-    div.thumbnail-container
-        each photo in gallery.photos
-            +photoThumbnail(gallery.slug, photo)
+    .galleries
+            - let j = 1
+            each photo in gallery.photos
+                +photoThumbnail(gallery.slug, photo, j)
+                - j++
+    
+    #lightbox.modal
+        span.close.cursor(onclick='closeModal()') &times;
+        .modal-content
+            each photo in gallery.photos
+                .mySlides
+                    img(src=`/gallery-images/${gallery.slug}/${photo}` style='width:100%')
+            a.prev(onclick='plusSlides(-1)') &#x276E;
+            a.next(onclick='plusSlides(1)') &#x276F;
+            //- Caption text
+            .caption-container
+            p#caption
+            // Thumbnail image controls
+            - let i = 1
+            each photo in gallery.photos
+                .column
+                img.demo(src=`/gallery-images/${gallery.slug}/${photo}` onclick=`currentSlide(${i})`)
+                - i++
+
+block footer-scripts
+    script(src="/js/lightbox.js")

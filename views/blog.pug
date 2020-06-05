@@ -2,10 +2,11 @@ extends layout
 
 block layout-content
     .blog-container
-        .blog-image
-            span.date=`${blog.created.getMonth() + 1}.${blog.created.getDate()}`
-            img(src=`/blog-images/${blog.photo}`)
-        h2=blog.title
-        h3=blog.headline
+        span.date=`${blog.created.getMonth() + 1}.${blog.created.getDate()}`
+        if blog.photo
+            .blog-image
+                img(src=`/blog-images/${blog.photo}`)
+        h2.blog-title=blog.title
+        h3.blog-headline=blog.headline
 
         .blog-body=blog.body

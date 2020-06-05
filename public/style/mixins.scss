@@ -1,0 +1,3 @@
+@mixin respond-to($vp-size){
+    @media only screen and (min-width: $vp-size) { @content; }
+}

@@ -3,7 +3,6 @@ extends layout
 include mixins/_galleryThumbnail
 
 block layout-content
-    h2= title
     .galleries
         each gallery in galleries
             +galleryThumbnail(gallery)

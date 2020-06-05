@@ -1,6 +1,6 @@
-mixin photoThumbnail(slug, photo)
-    .photo-thumbnail.thumbnail
-        a(href="")
-            .photo-thumbnail-inner
-                img(src=`/gallery-images/${slug}/${photo}`)
+mixin photoThumbnail(slug, photo, i)
+    .gallery-thumbnail.thumbnail
+        //- a(href="")
+        .gallery-thumbnail-inner
+            img(src=`/gallery-images/${slug}/${photo}` onclick=`openModal();currentSlide(${i})`)
 
