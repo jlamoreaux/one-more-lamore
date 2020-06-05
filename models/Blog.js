@@ -34,6 +34,7 @@ blogSchema.pre('save', function (next) {
 	next();
 
 	// TODO make more resiliant so slugs are unique
+	
 });
 
 module.exports = mongoose.model('Blog', blogSchema);

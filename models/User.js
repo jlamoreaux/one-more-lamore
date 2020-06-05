@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
+
 const UserDetail = new Schema({
 	username: String,
 	email: String,
