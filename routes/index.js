@@ -51,6 +51,13 @@ router.post('/updates/add',
 router.get('/login', userController.loginForm);
 router.get('/register', userController.registrationFrom);
 
+router.post('/register',
+    userController.validateRegistration,
+    userController.register,
+    // TODO: Login
+    // userController.loginForm
+);
+
 
 /*
     Other Routes

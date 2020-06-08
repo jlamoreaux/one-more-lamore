@@ -8,11 +8,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const flash = require('connect-flash');
-// const promisify = require('es6-promisify');
+const promisify = require('es6-promisify');
 const helpers = require('./helpers');
 const routes = require('./routes');
 const errorHandlers = require('./handlers/errorHandlers');
-
+require('./handlers/passport');
 
 /* 
     Express
@@ -52,10 +52,10 @@ app.use((req, res, next) => {
 	next();
 });
 
-// app.use((req, res, next) => {
-//     req.login = promisify(req.login, req);
-//     next();
-// });
+app.use((req, res, next) => {
+    req.login = promisify(req.login, req);
+    next();
+});
 
 
 /*
