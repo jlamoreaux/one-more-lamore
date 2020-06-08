@@ -20,6 +20,8 @@ html
     block header
       include mixins/_link
       header.top
+        if user
+          span hello #{user.firstName}
         nav.nav
           a(class="navbar-brand" href="/") #{h.siteName}
           button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")

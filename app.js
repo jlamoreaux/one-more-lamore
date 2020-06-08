@@ -19,17 +19,25 @@ require('./handlers/passport');
 */
 
 const app = express();
+
+// View Engine - Pug 
 app.set('views', path.join('./views'));
 app.set('view engine', 'pug');
+
+// Static Directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Parse raw requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// For validating registration
 app.use(expressValidator());
 
+// Pass along cookies
 app.use(cookieParser());
 
+// Keep users logged in
 app.use(session({
 	secret: process.env.SECRET,
 	key: process.env.KEY,
@@ -38,10 +46,11 @@ app.use(session({
 	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-// Passport JS is what we use to handle our logins
+// Passport JS to handle logins
 app.use(passport.initialize());
 app.use(passport.session());
 
+// So we can flash messages
 app.use(flash());
 
 app.use((req, res, next) => {

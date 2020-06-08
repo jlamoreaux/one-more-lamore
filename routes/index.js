@@ -3,6 +3,7 @@ const router = express.Router();
 const galleryController = require('../controllers/galleryController');
 const blogController = require('../controllers/blogController');
 const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 const additionalController = require('../controllers/additionalControllers');
 const { catchErrors } = require('../handlers/errorHandlers');
 
@@ -50,12 +51,15 @@ router.post('/updates/add',
 
 router.get('/login', userController.loginForm);
 router.get('/register', userController.registrationFrom);
+router.get('/logout', authController.logout);
+
+router.post('/login', authController.login);
 
 router.post('/register',
     userController.validateRegistration,
     userController.register,
     // TODO: Login
-    // userController.loginForm
+    authController.login
 );
 
 
