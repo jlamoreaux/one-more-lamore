@@ -15,7 +15,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', galleryController.homepage);
 
 router.get('/gallery', catchErrors(galleryController.getGalleries));
-router.get('/gallery/create', galleryController.addGallery);
+router.get('/gallery/create', authController.isAdmin, galleryController.addGallery);
 
 router.get('/gallery/:slug', catchErrors(galleryController.getGallery));
 
@@ -35,7 +35,7 @@ router.post('/gallery/update/:slug',
 */
 
 router.get('/updates', catchErrors(blogController.getBlogs));
-router.get('/updates/create', blogController.addBlog);
+router.get('/updates/create', authController.isAdmin, blogController.addBlog);
 
 router.get('/updates/:slug', catchErrors(blogController.getBlog));
 
