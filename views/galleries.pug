@@ -6,4 +6,6 @@ block layout-content
     .galleries
         each gallery in galleries
             +galleryThumbnail(gallery)
-        a(href='/gallery/create') New Gallery
+        if user
+            if user.isAdmin
+                a(href='/gallery/create') New Gallery

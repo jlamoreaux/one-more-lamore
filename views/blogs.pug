@@ -6,5 +6,7 @@ block layout-content
     .blogs
         each blog in blogs
             +blogThumbnail(blog)
-        a(href='/updates/create') New Post
+        if user
+            if user.isAdmin
+                a(href='/updates/create') New Post
 
