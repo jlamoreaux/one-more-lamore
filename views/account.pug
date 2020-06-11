@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_accountForm
+
+block layout-content
+    form.login-form(action="/account" method="post")
+        +accountForm
+
+        input#submit_button(type="submit" value='Submit')

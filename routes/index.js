@@ -46,6 +46,13 @@ router.post('/updates/add',
 );
 
 /*
+	User Routes
+*/
+router.get('/account', authController.isLoggedIn, userController.account);
+router.post('/account', catchErrors(userController.updateAccount));
+
+
+/*
     Auth Routes
 */
 

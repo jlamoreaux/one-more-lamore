@@ -1,0 +1,7 @@
+mixin accountForm()
+        label.login-label(for='firstName') First Name
+            input#first_name(type='textbox' name='firstname' value=`${user ? user.firstName : ''}`)
+        label.login-label(for='lastName') Last Name
+            input#last_name(type='textbox' name='lastname' value=`${user ? user.lastName : ''}`)
+        label.login-label(for='email') Email Address
+            input#email(type='textbox' name='email' value=`${user ? user.email : ''}`)

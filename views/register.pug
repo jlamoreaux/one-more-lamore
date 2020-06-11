@@ -1,16 +1,19 @@
 extends layout
 
+include mixins/_accountForm
+
 block layout-content
   div.View
     h1.Banner Sign Up
 
     form.login-form(action="/register" method="post")
-        label.login-label(for='firstName') First Name
-            input#first_name(type='textbox' name='firstname')
-        label.login-label(for='lastName') Last Name
-            input#last_name(type='textbox' name='lastname')
-        label.login-label(for='email') Email Address
-            input#email(type='textbox' name='email')
+        +accountForm
+        //- label.login-label(for='firstName') First Name
+        //-     input#first_name(type='textbox' name='firstname')
+        //- label.login-label(for='lastName') Last Name
+        //-     input#last_name(type='textbox' name='lastname')
+        //- label.login-label(for='email') Email Address
+        //-     input#email(type='textbox' name='email')
         label.login-label(for="password") Password
             input#password(type="password" oninput='validPW()' name='password')
             span#pw_alert
