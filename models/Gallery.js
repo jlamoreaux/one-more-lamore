@@ -33,4 +33,18 @@ gallerySchema.pre('save', function (next) {
     
 });
 
+gallerySchema.virtual('comments', {
+	ref: 'GalleryComment', // which model to link?
+	localField: '_id', // which field on the gallery?
+	foreignField: 'gallery', // which field on the comment?
+});
+
+function autopopulate(next) {
+	this.populate('comments');
+	next();
+}
+
+gallerySchema.pre('find', autopopulate);
+gallerySchema.pre('findOne', autopopulate);
+
 module.exports = mongoose.model('Gallery', gallerySchema);

@@ -1,6 +1,8 @@
 extends layout
 
 include mixins/_photoThumbnail
+include mixins/_commentForm
+include mixins/_comment
 
 block layout-content
     h3=gallery.description
@@ -10,6 +12,14 @@ block layout-content
                 +photoThumbnail(gallery.slug, photo, j)
                 - j++
     
+    if user
+        +commentForm(gallery, 'gallery')
+
+    if gallery.comments
+        .comments
+            each comment in gallery.comments
+                +comment(comment)
+
     #lightbox.modal
         span.close.cursor(onclick='closeModal()') &times;
         .modal-content

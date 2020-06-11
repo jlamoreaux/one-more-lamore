@@ -37,4 +37,18 @@ blogSchema.pre('save', function (next) {
 	
 });
 
+blogSchema.virtual('comments', {
+	ref: 'BlogComment', // which model to link?
+	localField: '_id', // which field on the blog?
+	foreignField: 'blog', // which field on the comment?
+});
+
+function autopopulate(next) {
+  this.populate('comments');
+  next();
+}
+
+blogSchema.pre('find', autopopulate);
+blogSchema.pre('findOne', autopopulate);
+
 module.exports = mongoose.model('Blog', blogSchema);

@@ -74,6 +74,9 @@ router.post('/register',
     Other Routes
 */
 
+router.post('/comment/blog/:id', catchErrors(additionalController.addBlogComment));
+router.post('/comment/gallery/:id', catchErrors(additionalController.addGalleryComment));
+
 router.get('/registry', additionalController.getRegistry);
 
 
