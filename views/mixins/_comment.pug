@@ -1,7 +1,8 @@
 mixin comment(comment)
-    .comment__header
-        .comment__author
-            p #{comment.author.firstName} #{comment.author.lastName}
-        time.comment__time(datetime=comment.created)= h.moment(comment.created).fromNow()
-    .comment__body
-        p= comment.text
+    .comment
+        .comment__header
+            .comment__author
+                p #{comment.author.firstName} #{comment.author.lastName}
+            time.comment__time(datetime=comment.created)= h.moment(comment.created).fromNow()
+        .comment__body
+            p= comment.text

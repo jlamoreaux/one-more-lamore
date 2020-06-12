@@ -11,14 +11,16 @@ block layout-content
             each photo in gallery.photos
                 +photoThumbnail(gallery.slug, photo, j)
                 - j++
-    
-    if user
-        +commentForm(gallery, 'gallery')
+    .comments
+        h4.comment__header Comments
+        if user
+            +commentForm(gallery, 'gallery')
+        
+        if gallery.comments
+                each comment in gallery.comments
+                    +comment(comment)
 
-    if gallery.comments
-        .comments
-            each comment in gallery.comments
-                +comment(comment)
+    
 
     #lightbox.modal
         span.close.cursor(onclick='closeModal()') &times;

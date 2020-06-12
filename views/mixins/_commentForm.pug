@@ -1,4 +1,4 @@
 mixin commentForm(post, type)
-    form(action=`/comment/${type}/${post.id}` method='POST')
-        textarea(name='text' placeholder='Add a comment...')
-        input.button(type='submit' value='Post')
+    form.form__comment(action=`/comment/${type}/${post.id}` method='POST')
+        textarea.form__comment--text(name='text' placeholder='Add a comment...')
+        input.button.form__comment--button(type='submit' value='Post')

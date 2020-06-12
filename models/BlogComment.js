@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 const blogCommentSchema = new mongoose.Schema({
     created: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     author: {
         type: mongoose.Schema.ObjectId,

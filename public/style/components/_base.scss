@@ -1,0 +1,291 @@
+body {
+    font-family: $secondary-font;
+    a:hover {
+        text-decoration: none;
+    }
+    &.not-index {
+        background-color: $off-white;
+
+        h2,
+        h3,
+        h4 {
+            text-align: left;
+            font-family: $secondary-font;
+            color: $primary-color;
+        }
+        .page-title {
+            font-size: 7em;
+            text-align: center;
+            font-family: $primary-font;
+            color: $green;
+            text-transform: uppercase;
+            background-image: linear-gradient( 109.6deg,  rgba($blush,1) 11.3%, rgba($pink,1) 100.2% );
+        }
+    }
+
+}
+
+.content {
+    max-width: $vp-large;
+    margin: auto;
+    padding: 3rem;
+    box-shadow: 0 1px 15px $grey;
+    background-color: $white;
+}
+
+
+
+/*
+    Blogs
+*/
+
+.blog-title {
+    color: $burgundy;
+    font-size: 3em;
+    padding: 10px 0 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.blogs {
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    .blog-title {
+        // font-size: 3em;
+        // padding: 10px 0 0;
+        // margin: 0;
+        // text-transform: uppercase;
+    }
+
+    .blog-headline {
+        text-transform: lowercase;
+        font-style: italic;
+        // padding: 0 0 20px;
+    }
+
+    .blog-thumbnail {
+        margin: auto;
+        width: 600px;
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-preview {
+        text-align: justify;
+    }
+
+    .read-more-link {
+        // background-color: $primary-color;
+        text-transform: uppercase;
+        border: 2px solid $secondary-color;
+        color: $secondary-color;
+        padding: 5px;
+        margin: auto 0 auto auto;
+        background-size: 200% 100%;
+        background-image: linear-gradient(to right, transparent 50%, $secondary-color 50%);
+
+        -webkit-transition: background-position .5s;
+        -moz-transition: background-position .5s;
+        transition: background-position .5s;
+
+
+
+        &:hover {
+            text-decoration: none;
+            background-position: 100% 0%;
+            color: $off-white;
+        }
+    }
+
+    .thumbnail-image-container{
+
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+        position: relative;
+
+        .blog-date {
+            position: relative;
+            color: $off-white;
+            font-size: 16rem;
+            text-align: center;
+            margin: auto;
+            width: 100%;
+            font-family: $secondary-font;
+            font-weight: 700;
+            // max-width: 250px;
+            z-index: 11;
+            // padding: 40px 0;
+        }
+
+        .thumbnail-image {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* fallback color */
+            background-position: center;
+            background-size: cover;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba($green, 0.3); 
+            z-index: 10;
+        }
+    }
+
+
+
+    .blog-link {
+        text-decoration: none;
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            .thumbnail-image-container:before {
+                background-color: rgba($green, 0.6);
+                transition: 3s;
+            }
+
+            .thumbnail-image{
+                transform: scale(1.2);
+                transition: all 3s;
+            }
+
+
+        }
+    }
+}
+
+// Individual Post
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 800px;
+    margin: auto;
+
+    .blog-image {
+        margin: auto;
+    }
+
+    .date {
+        font-size: 7rem;
+        font-family: $secondary-font;
+        line-height: 1;
+    }
+}
+
+/*
+    Galleries
+*/
+
+// Main Galleries Page
+
+.galleries {
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .gallery-thumbnail {
+        width: 100%;
+        padding: 10px;
+        @include respond-to($vp-small){
+            max-width: calc(50% - 10px);
+        }
+        @include respond-to($vp-large){
+            max-width: calc(100% / 3 - 10px);
+        }
+    }
+
+    .gallery-name {
+        font-family: $secondary-font;
+        // font-weight: 700;
+        font-size: 1.4em;
+        color: $primary-color;
+        text-transform: uppercase;
+    }
+}
+
+// Individual Galleries
+
+
+
+/* 
+Thumbnails
+*/
+
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+.thumbnail {
+    width: 100%;
+
+    img {
+        max-width: 100%;
+
+    }
+}
+
+/*
+Footer
+*/
+
+footer {
+    padding: 20px;
+}
+
+/*
+ Admin Tools
+ */
+
+.content .form {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: none;
+
+    label {
+        padding-top: 15px;
+    }
+
+    .tags {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .tag {
+            input {
+                margin: 10px;
+            }
+            label {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.button {
+    background-color: $primary-color;
+    max-width: 250px;
+    padding: 10px;
+    color: $off-white;
+    box-shadow: 1px 1px 10px $green;
+    border: none;
+}

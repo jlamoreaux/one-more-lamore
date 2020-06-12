@@ -14,11 +14,12 @@ block layout-content
 
         .blog-body=blog.body
 
-        if user
-            +commentForm(blog, 'blog')
-
-        if blog.comments
-            .comments
-                each comment in blog.comments
-                    +comment(comment)
+        .comments
+            h4.comment__header Comments
             
+            if blog.comments
+                .comments__container
+                    each comment in blog.comments
+                        +comment(comment)
+            if user
+                +commentForm(blog, 'blog')
