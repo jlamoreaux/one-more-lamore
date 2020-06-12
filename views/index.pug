@@ -1,13 +1,16 @@
 extends layout
 
 block header
+  div#countdown
 
 block layout-content
   div.homepage__content
     //- h1.Banner #{h.siteName}
-    div.Message
-      div.Title
-        h3 You found us!
+    div.Title
+      //- h2 You found us!
     img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
     //- div.button 
     a.button(href="/login") Please Login to Continue
+
+block footer-scripts
+  script(src="/js/countdown.js")

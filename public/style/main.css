@@ -183,6 +183,13 @@ body.not-index .page-title {
 
 .homepage__content .button {
   margin: 25px auto 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.homepage__content .button:hover {
+  color: #590606;
+  background-color: #ffffff;
 }
 
 .homepage__splash {
@@ -560,4 +567,65 @@ footer {
 
 .comments .comment .comment__header .comment__author {
   font-weight: bold;
+}
+
+#countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -ms-flex-direction: row;
+  -moz-flex-direction: row;
+  -webkit-box-pack: normal;
+          justify-content: normal;
+  -webkit-justify-content: normal;
+  -moz-justify-content: normal;
+  -ms-flex-pack: normal;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 50px;
+}
+
+.count {
+  margin: 5px;
+  padding: 10px;
+  width: 150px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 4em;
+  color: #ffffff;
+  text-align: center;
+}
+
+.count .label {
+  font-size: 1rem;
+}
+
+#days {
+  background-color: #590606;
+}
+
+#hours {
+  background-color: #153230;
+}
+
+#minutes {
+  background-color: #C98448;
+}
+
+#seconds {
+  background-color: #C5776B;
 }
