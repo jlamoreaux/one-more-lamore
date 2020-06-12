@@ -1,12 +1,13 @@
 extends layout
 
+block header
+
 block layout-content
-  div.View
+  div.homepage__content
     //- h1.Banner #{h.siteName}
     div.Message
       div.Title
-        h3 Our Family
-      span.Details More details
-    div.NavButtons
-      a(href="/login")
-          div.NavButton Login!
+        h3 You found us!
+    img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
+    //- div.button 
+    a.button(href="/login") Please Login to Continue

@@ -22,15 +22,15 @@ html
       header.top
         if user
           span hello #{user.firstName}
-        nav.nav
-          a(class="navbar-brand" href="/") #{h.siteName}
-          button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
-              span(class="navbar-toggler-icon")
-          div(class="expand navbar-light navbar-expand-sm" id="navbarNav")
-              ul.navbar-nav
-                  each item in h.menu
-                      li.navbar-item
-                          +link(item.title, item.slug )(class= 'nav-link')
+          nav.nav
+            a(class="navbar-brand" href="/") #{h.siteName}
+            button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+                span(class="navbar-toggler-icon")
+            div(class="expand navbar-light navbar-expand-sm" id="navbarNav")
+                ul.navbar-nav
+                    each item in h.menu
+                        li.navbar-item
+                            +link(item.title, item.slug )(class= 'nav-link')
       h2.page-title= title
 
     block messages

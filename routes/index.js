@@ -14,17 +14,19 @@ const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', galleryController.homepage);
 
-router.get('/gallery', catchErrors(galleryController.getGalleries));
+router.get('/gallery', authController.isLoggedIn, catchErrors(galleryController.getGalleries));
 router.get('/gallery/create', authController.isAdmin, galleryController.addGallery);
 
-router.get('/gallery/:slug', catchErrors(galleryController.getGallery));
+router.get('/gallery/:slug', authController.isLoggedIn, catchErrors(galleryController.getGallery));
 
 router.post('/gallery/add',
+	authController.isAdmin,
 	galleryController.upload,
 	catchErrors(galleryController.resize),
 	catchErrors(galleryController.createGallery)
 );
 router.post('/gallery/update/:slug',
+	authController.isAdmin,
 	galleryController.upload,
 	catchErrors(galleryController.resize),
 	catchErrors(galleryController.updateGallery)
@@ -34,12 +36,13 @@ router.post('/gallery/update/:slug',
     Blog Routes
 */
 
-router.get('/updates', catchErrors(blogController.getBlogs));
+router.get('/updates', authController.isLoggedIn, catchErrors(blogController.getBlogs));
 router.get('/updates/create', authController.isAdmin, blogController.addBlog);
 
-router.get('/updates/:slug', catchErrors(blogController.getBlog));
+router.get('/updates/:slug', authController.isLoggedIn, catchErrors(blogController.getBlog));
 
 router.post('/updates/add',
+	authController.isAdmin,
 	blogController.upload,
 	catchErrors(blogController.resize),
 	catchErrors(blogController.createBlog)
