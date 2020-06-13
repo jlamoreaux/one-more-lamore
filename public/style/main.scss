@@ -1,9 +1,21 @@
 /*
-    Imports
+    Setting & Variables
 */
+
+
 @import 'components/settings';
 @import 'components/mixins';
+
+/*
+    Individual Components
+*/
+
 @import 'components/modal';
-@import 'components/base';
-@import 'components/comments';
 @import 'components/countdown';
+@import 'components/comments';
+@import 'components/flash';
+
+/*
+    Main Styles
+*/
+@import 'components/base';

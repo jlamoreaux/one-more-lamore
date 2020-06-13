@@ -19,9 +19,9 @@ html
   body.not-index
     block header
       include mixins/_link
-      header.top
+      header.header.top
         if user
-          span hello #{user.firstName}
+          span.user__greeting Hello, #{user.firstName}
           nav.nav
             a(class="navbar-brand" href="/") #{h.siteName}
             button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
@@ -33,18 +33,17 @@ html
                             +link(item.title, item.slug )(class= 'nav-link')
       h2.page-title= title
 
-    block messages
-      if locals.flashes
-        .inner
-          .flash-messages
-            - const categories = Object.keys(locals.flashes)
-            each category in categories
-              each message in flashes[category]
-                .flash(class=`flash--${category}`)
-                  p.flash__text!= message
-                  button.flash__remove(onClick="this.parentElement.remove()") &times;
     main.content
-
+      block messages
+        if locals.flashes
+          .inner
+            .flash__messages
+              - const categories = Object.keys(locals.flashes)
+              each category in categories
+                each message in flashes[category]
+                  .flash(class=`${category}`)
+                    p.flash__text!= message
+                    button.flash__remove(onClick="this.parentElement.remove()") &times;
       block layout-content
 
     footer

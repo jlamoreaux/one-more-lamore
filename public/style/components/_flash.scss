@@ -1,0 +1,44 @@
+.flash__messages {
+    margin: auto;
+    // position: relative;
+    
+    .flash {
+        &.error {
+            background-color: $burgundy;
+        }
+
+        &.warning {
+            background-color: $orange;
+        }
+
+        &.info {
+            background-color: $grey;
+        }
+
+        &.success {
+            background-color: $green;
+        }
+
+        position: relative;
+        max-width: 480px;
+        // border: solid 4px;
+        margin: auto;
+        color: $white;
+
+        p {
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .flash__remove {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            border: none;
+            background: transparent;
+            color: $white;
+        }
+    }
+}

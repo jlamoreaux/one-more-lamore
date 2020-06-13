@@ -25,6 +25,15 @@ body {
 
 }
 
+.header {
+    text-align: right;
+
+    .user__greeting {
+        margin-right: 10px;
+        display: inline-block;
+    }
+}
+
 .content {
     max-width: $vp-large;
     margin: auto;
