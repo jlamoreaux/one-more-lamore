@@ -855,7 +855,6 @@ body.not-index .page-title {
 
 @media only screen and (min-width: 760px) {
   .index .homepage__content .button {
-    margin-left: -100px;
     bottom: 20%;
   }
 }
@@ -863,6 +862,7 @@ body.not-index .page-title {
 .index .homepage__content .button:hover {
   color: #590606;
   background-color: #ffffff;
+  text-decoration: none;
 }
 
 /*
