@@ -1,0 +1,18 @@
+extends layout
+
+block header
+
+block layout-content
+  .homepage__content
+    //- h1.Banner #{h.siteName}
+      //- h2 You found us!
+    .left__container
+      img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
+    .right__container
+      #countdown
+
+    //- div.button 
+    a.button(href="/login") Please Login to Continue
+
+block footer-scripts
+  script(src="/js/countdown.js")

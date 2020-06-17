@@ -1,0 +1,33 @@
+@keyframes image-slidein {    
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: calc(50% - 115px);
+    }
+}
+
+@keyframes countdown-slidein {    
+    from {
+        margin-left: 100%;
+    }
+
+    to {
+        margin-left: 10px;
+    }
+}
+
+@keyframes button-slideup {
+    0% {
+        bottom: -100px;
+    }
+
+    25% {
+        bottom: -100px;
+    }
+
+    75% {
+        bottom: 20%;
+    }
+}

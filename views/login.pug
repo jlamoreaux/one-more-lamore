@@ -1,14 +1,16 @@
 extends layout
 
-block layout-content
-  div.View
-    h1.Banner Login
+block header
 
-    form.login-form(action="/login" method="post")
+block layout-content
+  div.login
+    //- h1.Banner Login
+
+    form.form.login-form(action="/login" method="post")
         label.login-label(for='email') Email / Username
-            input#username(type='textbox' name='email')
+        input#username(type='textbox' name='email')
         label.login-label(for="password") Password
-            input#password(type="password" name='password')
-        input#submit_button(type="submit" value='Login')
+        input#password(type="password" name='password')
+        input#submit_button(type="submit" value='Login' class="button")
     span#register No account yet? 
         a(href="/register") Click here to register

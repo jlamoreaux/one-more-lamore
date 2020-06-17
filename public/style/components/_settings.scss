@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Amatic+SC&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* Colors */
 
@@ -11,6 +11,7 @@ $blush:         #DBC9C3;
 $sunset:        #B6704f;
 $pink:          #C5776B;
 $grey:          #B3BFBE;
+$gray:           $grey;
 
 $primary-color:         $burgundy;
 $secondary-color:       $sunset;
@@ -21,10 +22,11 @@ $color-on-secondary:    $grey;
 /* Fonts */
 $primary-font:      'Amatic SC', cursive;
 $secondary-font:    'Amiri', serif;
+$logo-font:         'Anton', arial, sans-serif;
 
 
 /* Screen Sizes */
 $vp-small:      600px;
-$vp-mid:        900px;
+$vp-mid:        760px;
 $vp-large:      1024px;
 $vp-xlarge:     1280px;

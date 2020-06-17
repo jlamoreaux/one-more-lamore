@@ -1,13 +1,16 @@
 #countdown {
     @include flex;
     justify-content: center;
-    margin: 50px;
+    margin: auto;
+    width: 100%;
+    max-width: 720px;
 }
 
 .count {
     margin: 5px;
     padding: 10px;
-    width: 150px;
+    // width: 150px;
+    width: calc(100% - 15px);
     border-radius: 5px;
     display: flex;
     flex-direction: column;

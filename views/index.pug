@@ -1,16 +1,26 @@
-extends layout
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    //- link(rel="shortcut icon", href="/favicon.ico")
+    
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="theme-color", content="#000000")
+    meta(author="jlamoreaux")
+    title= `${title} | ${h.siteName}`
 
-block header
-  div#countdown
+    link(rel="stylesheet" href="/style/main.css")
 
-block layout-content
-  div.homepage__content
-    //- h1.Banner #{h.siteName}
-    div.Title
-      //- h2 You found us!
-    img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
-    //- div.button 
-    a.button(href="/login") Please Login to Continue
+    body.index
+        .homepage__content
+            .left__container.container
+                img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
+            .right__container.container
+                a.button(href="/login") Please Login to Continue
+                #countdown
+            
 
-block footer-scripts
-  script(src="/js/countdown.js")
+        footer
+            block footer-content
+            block footer-scripts
+                script(src="/js/countdown.js")

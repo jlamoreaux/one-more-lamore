@@ -1,7 +1,17 @@
+html { height: 100%; }
 body {
     font-family: $secondary-font;
-    a:hover {
+    margin: 0;
+    height: 100%;
+    @include flex(column);
+
+    a {
+        color: $green;
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
     &.not-index {
         background-color: $off-white;
@@ -9,7 +19,7 @@ body {
         h2,
         h3,
         h4 {
-            text-align: left;
+            // text-align: left;
             font-family: $secondary-font;
             color: $primary-color;
         }
@@ -20,6 +30,7 @@ body {
             color: $green;
             text-transform: uppercase;
             background-image: linear-gradient( 109.6deg,  rgba($blush,1) 11.3%, rgba($pink,1) 100.2% );
+            margin: 0;
         }
     }
 
@@ -27,40 +38,271 @@ body {
 
 .header {
     text-align: right;
+    display: flex;
+    max-width: 1280px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
 
-    .user__greeting {
+
+    .logo {
+        font-family: $logo-font;
+        font-size: 1.2em;
+        -webkit-text-stroke-width: 1.5px;
+        -webkit-text-stroke-color: $pink;
+        -webkit-text-fill-color: transparent;
+        border: solid 2px $pink;
+        padding: 6px;
+        margin: 36px;
+        outline-offset: 6px;
+        outline: solid 7px $pink;
+
+        display: block;
+        max-width: 130px;
+        text-align: center;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .header__menu {
+        position: absolute;
+        width: 100%;
+        max-width: 640px;
+        margin: auto 0 0 auto;
+        // height: 100%;
+        top: 140px;
+        background-color: $off-white;
+        z-index: 99;
+
+        &.open {
+            @include flex(column);
+        }
+
+        display: none;
+
+        @include respond-to($vp-mid){
+            height: 100%;
+            @include flex(row);
+            position: relative;
+            top: 0;
+        }
+    }
+
+    .nav__button {
+        @include respond-to($vp-mid) {
+            display: none;
+        }
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        font-size: 3em;
+        color: $pink;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .user {
+
+        left: 10px;
+        cursor: pointer;
         margin-right: 10px;
-        display: inline-block;
+        font-size: 1.2em;
+
+        @include respond-to($vp-mid){
+            position: absolute;
+            left: auto;
+            right: 10px;
+        }
+
+        &:hover .user__options {
+            display: block;
+        }
+    }
+
+    .user__options {
+        display: block;
+
+        @include respond-to($vp-mid) {
+            right: 0;
+            width: 200px;
+            position: absolute;
+            background-color: $white;
+            box-shadow: 0 1px 15px $grey;
+            display: none;
+        }
+
+
+        .user__options__list {
+            list-style: none;
+            margin: 0;
+            padding: 5px;
+
+            li {
+                border-bottom: solid 1px $grey;
+                padding: 5px 20px;
+
+                &:hover {
+                    background-color: $burgundy;
+                    a { color: $white;}
+                }
+
+                a:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &.hidden {
+            
+        }
     }
 }
 
 .content {
     max-width: $vp-large;
-    margin: auto;
-    padding: 3rem;
+    width: calc(100% - 2em);
+    margin: 0 auto;
+    padding: 1em;
     box-shadow: 0 1px 15px $grey;
     background-color: $white;
+
+    @include respond-to($vp-mid){
+        padding: 3em;
+        width: calc(100% - 6em);
+    }
+
+    .title {
+        text-align: center;
+        font-size: 2em;
+    }
+}
+
+.nav {
+    // @include flex;
+    margin-right: 10px;
+
+    @include respond-to($vp-mid){
+        margin-top: auto;
+        width: 100%;
+        max-width: 640px;
+    }
+
+    .nav__items {
+        // @include flex(column, $justify-content: space-evenly);
+        list-style: none;
+        // width: 100%;
+        // justify-content: space-evenly;
+        font-size: 1.2em;
+        padding: 5px;
+
+        .nav__item {
+            padding: 5px 20px;
+            border-bottom: solid 1px #B3BFBE;
+            &:hover {
+                background-color: $burgundy;
+                a {
+                    color: $white;
+                }
+                @include respond-to($vp-large) {
+                    background-color: transparent;
+                    a { color: inherit; }
+                }
+            }
+            a {
+
+                width: 100%;
+            }
+        }
+
+        @include respond-to($vp-mid) {
+            @include flex(row, $justify-content: space-evenly);
+
+            .nav__item { border: none; }
+        }
+    }
 }
 
 /*
     Homepage
 */
 
-.homepage__content {
-    @include flex(column);
+.index {
+    height: 100%;
 
-    .button {
-        margin: 25px auto 0;
-        transition: all .3s;
+    .homepage__splash {
+        max-width: 100%;
+        max-height: 480px;
+        margin: 20px auto;
 
-        &:hover { color: $burgundy; background-color: $white;}
+        @include respond-to($vp-mid){
+            margin: auto;
+        }
+
+
+        animation-name: image-slidein;
+        animation-duration: 2s;
+        transition: all 2s
     }
-}
 
-.homepage__splash {
-    max-width: 100%;
-    max-height: 480px;
-    margin: 20px auto;
+    .homepage__content {
+        @include flex(column);
+        width: 100%;
+        height: 100%;
+
+        @include respond-to($vp-mid) {
+            @include flex(row);
+        }
+
+        .container {
+            width: 100%;
+
+            @include respond-to($vp-mid){
+                width: 50%;
+            }
+        }
+
+        .left__container {
+            background-color: $blush;
+            @include flex;
+        }
+
+        .right__container {
+            @include flex;
+            background-color: $white;
+        }
+
+        #countdown {
+            animation-name: countdown-slidein;
+            animation-delay: 1s;
+            animation-duration: 2s;
+        }
+
+        .button {
+            margin: 25px auto 0;
+            transition: all .3s;
+            position: absolute;
+            bottom: 10px;
+            right: calc(50% - 90px);
+
+            animation-name: button-slideup;
+            // animation-delay: 1s;
+            animation-duration: 4s;
+
+            @include respond-to($vp-mid){
+                margin-left: -100px;
+                bottom: 20%;            
+            }
+
+
+
+            &:hover { color: $burgundy; background-color: $white;}
+        }
+    }
 }
 
 
@@ -75,10 +317,16 @@ body {
     padding: 10px 0 0;
     margin: 0;
     text-transform: uppercase;
+    text-align: center;
+
+    @include respond-to($vp-mid){
+        text-align: left;
+    }
 }
 
 .blogs {
     max-width: 1024px;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -98,7 +346,8 @@ body {
 
     .blog-thumbnail {
         margin: auto;
-        width: 600px;
+        max-width: 600px;
+        width: 100%;
         padding-top: 40px;
         display: flex;
         flex-direction: column;
@@ -126,7 +375,7 @@ body {
 
         &:hover {
             text-decoration: none;
-            background-position: 100% 0%;
+            background-position: 101% 0%;
             color: $off-white;
         }
     }
@@ -139,9 +388,13 @@ body {
         position: relative;
 
         .blog-date {
+            @include respond-to($vp-large){
+                font-size: 16rem;
+            }
+
             position: relative;
             color: $off-white;
-            font-size: 16rem;
+            font-size: 12rem;
             text-align: center;
             margin: auto;
             width: 100%;
@@ -237,7 +490,7 @@ body {
             max-width: calc(50% - 10px);
         }
         @include respond-to($vp-large){
-            max-width: calc(100% / 3 - 10px);
+            max-width: calc(100% / 3 - 20px);
         }
     }
 
@@ -277,7 +530,7 @@ Thumbnails
 Footer
 */
 
-footer {
+.footer {
     padding: 20px;
 }
 
@@ -286,14 +539,27 @@ footer {
  */
 
 .content .form {
-    max-width: 800px;
+    // max-width: 320px;
+    // width: 100%;
     display: flex;
     flex-direction: column;
     margin: auto;
     border: none;
 
     label {
-        padding-top: 15px;
+        // padding-top: 15px;
+    }
+
+    input {
+        margin: 10px 0;
+        height: 2em;
+        font-size: 1em;
+    }
+
+    input[type="textbox"],
+    input[type="password"]
+    {
+        background-color: $off-white;
     }
 
     .tags {
