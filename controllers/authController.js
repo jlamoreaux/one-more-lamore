@@ -7,7 +7,7 @@ const promisify = require('es6-promisify');
 exports.login = passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: 'Login Failed',
-    successRedirect: '/updates',
+    successRedirect: '/home',
     successFlash: 'Welcome!',
 });
 
@@ -26,6 +26,18 @@ exports.isLoggedIn = (req, res, next) => {
     res.redirect('/login');
 };
 
+exports.isActive = (req, res, next) => {
+    const backURL = req.header("Referer");
+    if (req.isAuthenticated()) {
+      if (req.user.isActive) {
+        next();
+        return;
+      }
+    }
+    req.flash("error", "Sorry, you don't have permission to do that");
+    res.redirect('/home');
+}
+
 exports.isAdmin = (req, res, next) => {
     const backURL = req.header('Referer');
     if (req.isAuthenticated()) {
@@ -35,5 +47,5 @@ exports.isAdmin = (req, res, next) => {
         }
     }
     req.flash('error', 'Sorry, you don\'t have permission to do that');
-    res.redirect(backURL);
+    res.redirect('/home');
 };

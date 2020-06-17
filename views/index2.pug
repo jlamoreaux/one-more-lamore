@@ -1,18 +1,21 @@
 extends layout
 
-block header
-
 block layout-content
   .homepage__content
     //- h1.Banner #{h.siteName}
-      //- h2 You found us!
-    .left__container
-      img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
-    .right__container
+    h2 You found us!
+
+    section.welcome
+      p This is our family website. It's a work in progress but will hopefully be a good place for you to catch up on how Eisley is doing.
+
+      if !user.isActive
+        p The activation request for your has been sent. You won't be able to access anything yet.
+        | Once your account is active you will receive an email letting you know and you will be able to access the rest of the site.
+
+    section.countdown__container
+      h3 Days until due date:
       #countdown
 
-    //- div.button 
-    a.button(href="/login") Please Login to Continue
 
 block footer-scripts
   script(src="/js/countdown.js")

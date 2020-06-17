@@ -1,0 +1,10 @@
+extends email-layout
+
+block content
+  h2 New User Registered For OneMoreLamore
+  p Hello. A new user has requested access. You will find the user's information listed below:
+  p #{user.firstName} #{user.lastName}, #{user.email}
+
+  p Please click the following button to activate the account.
+  +button(activateURL, 'Activate User →')
+  p If you can't click the above button please visit #{activateURL}

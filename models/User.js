@@ -27,7 +27,7 @@ const userSchema = new Schema({
 		required: 'Please provide a last name',
 		trim: true
 	},
-	active: {
+	isActive: {
 		type: Boolean,
 		default: false
 	},

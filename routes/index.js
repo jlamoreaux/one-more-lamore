@@ -12,12 +12,14 @@ const { catchErrors } = require('../handlers/errorHandlers');
     Gallery Routes
 */
 
-router.get('/', galleryController.homepage);
+router.get('/', galleryController.splashpage);
 
-router.get('/gallery', authController.isLoggedIn, catchErrors(galleryController.getGalleries));
+router.get('/home', authController.isLoggedIn, galleryController.homepage);
+
+router.get('/gallery', authController.isActive, catchErrors(galleryController.getGalleries));
 router.get('/gallery/create', authController.isAdmin, galleryController.addGallery);
 
-router.get('/gallery/:slug', authController.isLoggedIn, catchErrors(galleryController.getGallery));
+router.get('/gallery/:slug', authController.isActive, catchErrors(galleryController.getGallery));
 
 router.post('/gallery/add',
 	authController.isAdmin,
@@ -36,10 +38,10 @@ router.post('/gallery/update/:slug',
     Blog Routes
 */
 
-router.get('/updates', authController.isLoggedIn, catchErrors(blogController.getBlogs));
+router.get('/updates', authController.isActive, catchErrors(blogController.getBlogs));
 router.get('/updates/create', authController.isAdmin, blogController.addBlog);
 
-router.get('/updates/:slug', authController.isLoggedIn, catchErrors(blogController.getBlog));
+router.get('/updates/:slug', authController.isActive, catchErrors(blogController.getBlog));
 
 router.post('/updates/add',
 	authController.isAdmin,
@@ -53,6 +55,7 @@ router.post('/updates/add',
 */
 router.get('/account', authController.isLoggedIn, userController.account);
 router.post('/account', catchErrors(userController.updateAccount));
+router.get('/account/activate/:id', authController.isAdmin, userController.activateAccount);
 
 
 /*

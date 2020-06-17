@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const mail = require('../handlers/mail');
 
 exports.loginForm = (req, res) => {
 	res.render('login', { title: 'Login' });
@@ -62,6 +63,14 @@ exports.register = async (req, res, next) => {
         req.flash('error', e.message);
         res.redirect(backURL);
     }
+    const activateURL = `http://${req.headers.host}/account/activate/${user._id}`;
+    await mail.send({
+        recipient: process.env.WEBMASTER,
+        subject: 'New User Registration',
+        user,
+        activateURL,
+        filename: 'user-activation',
+    });
 };
 
 exports.account = (req, res) => {
@@ -82,4 +91,18 @@ exports.updateAccount = async (req, res) => {
     );
     req.flash('success', 'Updated the profile!');
     res.redirect('back');
+}
+
+exports.activateAccount = async (req, res) => {
+    const user = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            $set: {
+                isActive: true
+            }
+        },
+        { new: true, runValidators: true, context: 'query' }
+    );
+    req.flash('success', `${user.firstName} is now an active user!`);
+    res.redirect('/updates');
 }

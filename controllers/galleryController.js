@@ -17,8 +17,12 @@ const multerOptions = {
     }
 };
 
+exports.splashpage = (req, res) => {
+    res.render('index');
+}
+
 exports.homepage = (req, res) => {
-    res.render('index', { title: 'Home' },);
+    res.render('index2', { title: 'Home' });
 }
 
 exports.getGalleries = async (req, res) => {
