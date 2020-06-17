@@ -18,7 +18,7 @@ const multerOptions = {
 };
 
 exports.splashpage = (req, res) => {
-    res.render('index');
+    res.render('index', {title: 'OneMoreLamore'});
 }
 
 exports.homepage = (req, res) => {
