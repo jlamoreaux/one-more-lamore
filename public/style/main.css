@@ -470,11 +470,9 @@ body.not-index .page-title {
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: #C5776B;
   -webkit-text-fill-color: transparent;
-  border: solid 2px #C5776B;
   padding: 6px;
   margin: 36px;
   outline-offset: 6px;
-  outline: solid 7px #C5776B;
   display: block;
   max-width: 130px;
   text-align: center;
