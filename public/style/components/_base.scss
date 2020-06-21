@@ -3,7 +3,7 @@ body {
     font-family: $secondary-font;
     margin: 0;
     height: 100%;
-    @include flex(column);
+    // @include flex(column);
 
     a {
         color: $green;
@@ -38,7 +38,7 @@ body {
 
 .header {
     text-align: right;
-    display: flex;
+    @include flex;
     max-width: 1280px;
     width: 100%;
     position: relative;
@@ -75,6 +75,7 @@ body {
         top: 140px;
         background-color: $off-white;
         z-index: 99;
+        right: 0;
 
         &.open {
             @include flex(column);
@@ -85,7 +86,7 @@ body {
         @include respond-to($vp-mid){
             height: 100%;
             @include flex(row);
-            position: relative;
+            // position: relative;
             top: 0;
         }
     }
