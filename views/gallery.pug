@@ -35,10 +35,10 @@ block layout-content
             p#caption
             // Thumbnail image controls
             - let i = 1
-            each photo in gallery.photos
-                .column
-                img.demo(src=`/gallery-images/${gallery.slug}/${photo}` onclick=`currentSlide(${i})`)
-                - i++
+                each photo in gallery.photos
+                    .column
+                        img.demo(src=`/gallery-images/${gallery.slug}/${photo}` onclick=`currentSlide(${i})` style="width: 100%;")
+                        - i++
 
 block footer-scripts
     script(src="/js/lightbox.js")
