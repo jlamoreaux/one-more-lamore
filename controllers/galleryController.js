@@ -18,8 +18,8 @@ const multerOptions = {
 };
 
 exports.splashpage = (req, res) => {
-    res.render('index', {title: 'OneMoreLamore'});
-}
+    res.render("index", { title: 'OneMoreLamore' });
+};
 
 exports.homepage = (req, res) => {
     res.render('index2', { title: 'Home' });
