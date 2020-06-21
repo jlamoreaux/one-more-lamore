@@ -12,39 +12,39 @@ const multerOptions = {
         if (isPhoto) {
             next(null, true);
         } else {
-            next({ message: `That file type isn't allowed!` }, false);
+            next({ message: 'That file type isn\'t allowed!' }, false);
         }
     }
 };
 
 exports.splashpage = (req, res) => {
-    res.render("index", { title: 'OneMoreLamore' });
+    res.render('index', { title: 'OneMoreLamore' });
 };
 
 exports.homepage = (req, res) => {
     res.render('index2', { title: 'Home' });
-}
+};
 
 exports.getGalleries = async (req, res) => {
     const galleries = await Gallery.find();
     res.render('galleries', { title: 'Galleries', galleries });
-}
+};
 
 exports.addGallery = (req, res) => {
     res.render('addGallery', { title: 'Add Gallery' });
-}
+};
 
 exports.getGallery = async (req, res) => {
     const gallery = await Gallery.findOne({ slug: req.params.slug });
     res.render('gallery', { title: gallery.name, gallery });
-}
+};
 
 exports.upload = multer({ multerOptions }).array('photos', 40);
 
 exports.resize = async (req, res, next) => {
     // Check if there is no new file to resize
     if (!req.files) {
-        console.log("No new file");
+        console.log('No new file');
         next();
         return;
     }
@@ -63,23 +63,24 @@ exports.resize = async (req, res, next) => {
         await photos.resize(800, jimp.AUTO);
 
         await photos.write(`./public/gallery-images/${slug(req.body.name)}/${req.body.photos[i]}`);
-        i++
+        i++;
     });
 
     next();
-}
+};
 
 exports.createGallery = async (req, res) => {
     // TODO: Upload photos and create gallery
     const gallery = await(new Gallery(req.body)).save();
     await gallery.save();
-    req.flash('success', `Successfully Created Gallery "${gallery.name}".`)
+    req.flash('success', `Successfully Created Gallery "${gallery.name}".`);
     res.redirect(`/gallery/${gallery.slug}`);
-}
+};
 
 exports.updateGallery = (req, res) => {
+    // const gallery = await Gallery.findOneAndUpdate({ slug: req.params.slug });
     // TODO: Update gallery
-}
+};
 
 // const photoResize = async (file, req) => {
 //     let photo = await jimp.read(file.buffer);

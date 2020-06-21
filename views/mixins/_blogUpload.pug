@@ -1,16 +1,21 @@
 include _tags
 
-mixin blogUpload
-    form(action="/updates/add" method="POST" class="form" enctype="multipart/form-data")
+mixin blogUpload(blog = {})
+    form(action=`/updates/add/${blog._id || ''}` method="POST" class="form" enctype="multipart/form-data")
         label(for="title") Title of Post
-        input(type="text" name="title" value="")
+        input(type="text" name="title" value=blog.title)
         label(for="headline") Headline
-        input(type="text" name="headline" placeholder="Enter a brief headline here" value="")
+        input(type="text" name="headline" placeholder="Enter a brief headline here" value=blog.headline)
         label(for="photo")
-            input(type="file" name="photo" id="files" accept="image/gif, image/png, image/jpeg")
+            input(type="file" name="photo" id="files" accept="image/gif, image/png, image/jpeg" value=blog.photo)
             output#list
         label(for="body")
-        textarea(name="body", cols="30", rows="10")
-        +tags
+        textarea(name="body", cols="30", rows="10")= blog.body
+        ul.tags
+            - const tags = blog.tags || []
+            each choice in h.tags
+                .tag
+                    input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                    label(for=choice)= choice
         input(type="submit" value="Save" class="button")
         

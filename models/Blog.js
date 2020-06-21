@@ -22,6 +22,11 @@ const blogSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
+	owner: {
+		type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: 'An owner must be supplied'
+	},
 	photo: String
 });
 
@@ -44,8 +49,9 @@ blogSchema.virtual('comments', {
 });
 
 function autopopulate(next) {
-  this.populate('comments');
-  next();
+	this.populate('owner');
+	this.populate('comments');
+	next();
 }
 
 blogSchema.pre('find', autopopulate);
