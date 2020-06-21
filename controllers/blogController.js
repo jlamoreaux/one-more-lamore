@@ -56,9 +56,27 @@ exports.resize = async (req, res, next) => {
 };
 
 exports.createBlog = async (req, res) => {
-	// TODO: Upload photos and create gallery
+	req.body.owner = req.user._id;
 	const blog = await (new Blog(req.body)).save();
 	await blog.save();
 	req.flash('success', `Successfully Posted Update "${blog.title}".`);
 	res.redirect(`/updates/${blog.slug}`);
+};
+
+exports.editBlog = async (req, res) => {
+	const blog = await Blog.findOne({ _id: req.params.id });
+	console.log(blog);
+	res.render('editBlog', { title: `Edit "${blog.title}"`, blog });
+};
+
+exports.updateBlog = async (req, res) => {
+	const blog = await Blog.findOneAndUpdate(
+		{ _id: req.params.id },
+		req.body, {
+		new: true, // Return the new store instead of the old
+		runValidators: true,
+	}
+	).exec();
+	req.flash('success', `Successfully updated <strong>${blog.title}</strong>. <a href="/blog/${blog.slug}">View Store</a>`);
+	res.redirect(`/blog/${blog.id}/edit`);
 };

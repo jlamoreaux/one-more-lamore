@@ -50,6 +50,15 @@ router.post('/updates/add',
 	catchErrors(blogController.createBlog)
 );
 
+router.get('/updates/:id/edit', authController.isAdmin, catchErrors(blogController.editBlog));
+router.post(
+  '/updates/add/:id',
+  authController.isAdmin,
+  blogController.upload,
+  catchErrors(blogController.resize),
+  catchErrors(blogController.updateBlog)
+);
+
 /*
 	User Routes
 */

@@ -11,6 +11,8 @@ block layout-content
                 img(src=`/blog-images/${blog.photo}`)
         h2.blog-title=blog.title
         h3.blog-headline=blog.headline
+        if blog.owner
+            h4.author Written by #{blog.owner.firstName}
 
         .blog-body=blog.body
 
@@ -23,3 +25,6 @@ block layout-content
                         +comment(comment)
             if user
                 +commentForm(blog, 'blog')
+
+                if user.isAdmin
+                    a(href=`/updates/${blog._id}/edit`) Edit Post
