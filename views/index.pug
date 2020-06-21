@@ -16,7 +16,10 @@ html
             .left__container.container
                 img.homepage__splash(src="/images/homepage.png", alt="Colored pencil drawing of Jordan and a pregant Penny")
             .right__container.container
-                a.button(href="/login") Please Login to Continue
+                if user
+                    a.button(href="/home") Enter
+                else
+                    a.button(href="/login") Please Login to Continue
                 #countdown
             
 

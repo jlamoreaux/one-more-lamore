@@ -858,6 +858,8 @@ body.not-index .page-title {
   position: absolute;
   bottom: 10px;
   right: calc(50% - 90px);
+  width: 165px;
+  text-align: center;
   -webkit-animation-name: button-slideup;
           animation-name: button-slideup;
   -webkit-animation-duration: 4s;
