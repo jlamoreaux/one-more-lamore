@@ -18,7 +18,7 @@ const multerOptions = {
 };
 
 exports.getBlogs = async (req, res) => {
-	const blogs = await Blog.find();
+	const blogs = await Blog.find().sort([['created', -1]]);
 	res.render('blogs', { title: 'Updates', blogs });
 };
 

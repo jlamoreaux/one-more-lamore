@@ -443,7 +443,7 @@ body.not-index h4 {
 }
 
 body.not-index .page-title {
-  font-size: 7em;
+  font-size: 7rem;
   text-align: center;
   font-family: "Amatic SC", cursive;
   color: #153230;
@@ -649,7 +649,8 @@ body.not-index .page-title {
 
 .content .title {
   text-align: center;
-  font-size: 2em;
+  font-size: 5em;
+  margin: 0.4em;
 }
 
 .nav {
@@ -903,10 +904,20 @@ body.not-index .page-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  display: -moz-flex;
+  display: -ms-flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-direction: column;
+  -moz-flex-direction: column;
+  -webkit-box-pack: normal;
+          justify-content: normal;
+  -webkit-justify-content: normal;
+  -moz-justify-content: normal;
+  -ms-flex-pack: normal;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .blogs .blog-headline {
@@ -947,7 +958,7 @@ body.not-index .page-title {
 
 .blogs .read-more-link:hover {
   text-decoration: none;
-  background-position: 101% 0%;
+  background-position: 100% 0%;
   color: #F7ECE5;
 }
 
@@ -1036,7 +1047,7 @@ body.not-index .page-title {
 }
 
 .blog-container .date {
-  font-size: 7rem;
+  font-size: 2rem;
   font-family: "Amiri", serif;
   line-height: 1;
 }
@@ -1066,9 +1077,9 @@ body.not-index .page-title {
   padding: 10px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 760px) {
   .galleries .gallery-thumbnail {
-    max-width: calc(50% - 10px);
+    max-width: calc(50% - 20px);
   }
 }
 

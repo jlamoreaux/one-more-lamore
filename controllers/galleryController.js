@@ -26,7 +26,7 @@ exports.homepage = (req, res) => {
 };
 
 exports.getGalleries = async (req, res) => {
-    const galleries = await Gallery.find();
+    const galleries = await Gallery.find().sort([['created', -1]]);
     res.render('galleries', { title: 'Galleries', galleries });
 };
 

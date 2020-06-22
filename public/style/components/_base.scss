@@ -24,7 +24,7 @@ body {
             color: $primary-color;
         }
         .page-title {
-            font-size: 7em;
+            font-size: 7rem;
             text-align: center;
             font-family: $primary-font;
             color: $green;
@@ -179,7 +179,8 @@ body {
 
     .title {
         text-align: center;
-        font-size: 2em;
+        font-size: 5em;
+        margin: 0.4em;
     }
 }
 
@@ -335,8 +336,7 @@ body {
     max-width: 1024px;
     width: 100%;
     margin: auto;
-    display: flex;
-    flex-direction: column;
+    @include flex($direction: column);
 
     .blog-title {
         // font-size: 3em;
@@ -382,7 +382,7 @@ body {
 
         &:hover {
             text-decoration: none;
-            background-position: 101% 0%;
+            background-position: 100% 0%;
             color: $off-white;
         }
     }
@@ -470,7 +470,7 @@ body {
     }
 
     .date {
-        font-size: 7rem;
+        font-size: 2rem;
         font-family: $secondary-font;
         line-height: 1;
     }
@@ -493,8 +493,9 @@ body {
     .gallery-thumbnail {
         width: 100%;
         padding: 10px;
-        @include respond-to($vp-small){
-            max-width: calc(50% - 10px);
+        // max-width: calc(50% - 10px);
+        @include respond-to($vp-mid){
+            max-width: calc(50% - 20px);
         }
         @include respond-to($vp-large){
             max-width: calc(100% / 3 - 20px);
