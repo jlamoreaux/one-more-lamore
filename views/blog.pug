@@ -7,8 +7,8 @@ block layout-content
     .blog-container
         span.date=`${blog.created.getMonth() + 1}.${blog.created.getDate()}.${blog.created.getYear() - 100}`
         if blog.photo
-            .blog-image
-                img(src=`/blog-images/${blog.photo}`)
+            .blog__image__container
+                img.blog__image(src=`/blog-images/${blog.photo}`)
         //- h2.blog-title=blog.title
         h3.blog-headline=blog.headline
         if blog.owner
