@@ -179,8 +179,9 @@ body {
 
     .title {
         text-align: center;
-        font-size: 5em;
+        font-size: 4em;
         margin: 0.4em;
+        overflow-wrap: break-word;
     }
 }
 
@@ -465,8 +466,10 @@ body {
     max-width: 800px;
     margin: auto;
 
-    .blog-image {
-        margin: auto;
+    .blog__image__container {
+        .blog__image {
+            max-width: 100%;
+        }
     }
 
     .date {

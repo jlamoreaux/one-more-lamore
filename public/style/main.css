@@ -649,8 +649,9 @@ body.not-index .page-title {
 
 .content .title {
   text-align: center;
-  font-size: 5em;
+  font-size: 4em;
   margin: 0.4em;
+  overflow-wrap: break-word;
 }
 
 .nav {
@@ -1042,8 +1043,8 @@ body.not-index .page-title {
   margin: auto;
 }
 
-.blog-container .blog-image {
-  margin: auto;
+.blog-container .blog__image__container .blog__image {
+  max-width: 100%;
 }
 
 .blog-container .date {
