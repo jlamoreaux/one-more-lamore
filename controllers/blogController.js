@@ -78,5 +78,5 @@ exports.updateBlog = async (req, res) => {
 	}
 	).exec();
 	req.flash('success', `Successfully updated <strong>${blog.title}</strong>. <a href="/blog/${blog.slug}">View Store</a>`);
-	res.redirect(`/blog/${blog.id}/edit`);
+	res.redirect(`/updates/${blog.slug}`);
 };
