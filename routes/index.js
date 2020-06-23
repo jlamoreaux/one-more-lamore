@@ -64,7 +64,8 @@ router.post(
 */
 router.get('/account', authController.isLoggedIn, userController.account);
 router.post('/account', catchErrors(userController.updateAccount));
-router.get('/account/activate/:id', authController.isAdmin, userController.activateAccount);
+router.get('/account/activate/:id', authController.isAdmin, catchErrors(userController.activateAccount));
+router.get('/account/clear-alerts', authController.isLoggedIn, catchErrors(userController.clearAlerts));
 
 
 /*

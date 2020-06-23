@@ -106,3 +106,15 @@ exports.activateAccount = async (req, res) => {
     req.flash('success', `${user.firstName} is now an active user!`);
     res.redirect('/updates');
 }
+
+exports.clearAlerts = async (req, res) => {
+    const user = await User.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+            $set: {
+                alerts: []
+            }
+        },
+    );
+    res.json(user);
+}

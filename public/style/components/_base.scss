@@ -47,19 +47,24 @@ body {
 
     .logo {
         font-family: $logo-font;
-        font-size: 1.2em;
+        font-size: 2em;
         -webkit-text-stroke-width: 1.5px;
         -webkit-text-stroke-color: $pink;
         -webkit-text-fill-color: transparent;
         // border: solid 2px $pink;
         padding: 6px;
-        margin: 36px;
+        margin: 36px auto;
         outline-offset: 6px;
         // outline: solid 7px $pink;
 
         display: block;
-        max-width: 130px;
+        max-width: 170px;
         text-align: center;
+
+        @include respond-to($vp-mid) {
+            margin: 36px;
+            margin-left: 200px;
+        }
 
         &:hover {
             text-decoration: none;
@@ -67,12 +72,13 @@ body {
     }
 
     .header__menu {
+        @media (max-width: $vp-mid - 1) {
+            @include mobile-popout;
+        }
         position: absolute;
-        width: 100%;
         max-width: 640px;
         margin: auto 0 0 auto;
         // height: 100%;
-        top: 140px;
         background-color: $off-white;
         z-index: 99;
         right: 0;
@@ -114,15 +120,20 @@ body {
         margin-right: 10px;
         font-size: 1.2em;
 
+        .user__greeting {
+            padding: 20px;
+        }
+
         @include respond-to($vp-mid){
             position: absolute;
             left: auto;
             right: 10px;
+            margin: 20px 0;
         }
 
-        &:hover .user__options {
-            display: block;
-        }
+        // &:hover .user__options {
+        //     display: block;
+        // }
     }
 
     .user__options {
@@ -135,6 +146,11 @@ body {
             background-color: $white;
             box-shadow: 0 1px 15px $grey;
             display: none;
+            top: 50px;
+
+            &.open {
+                display: block;
+            }
         }
 
 
@@ -165,16 +181,18 @@ body {
 }
 
 .content {
-    max-width: $vp-large;
+    max-width: $vp-xlarge;
     width: calc(100% - 2em);
     margin: 0 auto;
     padding: 1em;
     box-shadow: 0 1px 15px $grey;
     background-color: $white;
+    position: relative;
 
     @include respond-to($vp-mid){
         padding: 3em;
         width: calc(100% - 6em);
+        z-index: 100;
     }
 
     .title {
@@ -281,7 +299,7 @@ body {
 
         #countdown {
             animation-name: countdown-slidein;
-            animation-delay: 1s;
+            // animation-delay: 1s;
             animation-duration: 2s;
         }
 
