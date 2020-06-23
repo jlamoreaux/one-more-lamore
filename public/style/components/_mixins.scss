@@ -20,3 +20,19 @@
     flex-wrap: $wrap;
 
 }
+
+@mixin mobile-popout {
+    position: absolute;
+    width: 100%;
+    top: 140px;
+    box-shadow: 2px 1px 10px $black;
+}
+
+@mixin bounce($delay: 0s) {
+    animation-name: bounce;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+    animation-delay: $delay;
+}

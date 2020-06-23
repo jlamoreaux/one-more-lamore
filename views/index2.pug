@@ -13,9 +13,15 @@ block layout-content
         | Once your account is active you will receive an email letting you know and you will be able to access the rest of the site.
 
     section.countdown__container
-      h3 Days until due date:
+      h3 
+        span(style="text-decoration: line-through") Days until due date:
+        br
+        span When will she be here?
       #countdown
+        #days(class="count") 06
+        #hours(class="count") ??
+        #minutes(class="count") 2020
 
 
 block footer-scripts
-  script(src="/js/countdown.js")
+  //- script(src="/js/countdown.js")

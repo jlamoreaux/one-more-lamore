@@ -64,9 +64,166 @@
   }
 }
 
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    -webkit-transform: scale(1.1, 0.9) translateY(0);
+            transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    -webkit-transform: scale(0.9, 1.1) translateY(-25px);
+            transform: scale(0.9, 1.1) translateY(-25px);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 0.95) translateY(0);
+            transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    -webkit-transform: scale(1, 1) translateY(-7px);
+            transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    -webkit-transform: scale(1.1, 0.9) translateY(0);
+            transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    -webkit-transform: scale(0.9, 1.1) translateY(-25px);
+            transform: scale(0.9, 1.1) translateY(-25px);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 0.95) translateY(0);
+            transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    -webkit-transform: scale(1, 1) translateY(-7px);
+            transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+}
+
 /*
     Individual Components
 */
+.alerts__button {
+  z-index: 999;
+  position: absolute;
+  margin: 10px;
+  color: #C5776B;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 760px) {
+  .alerts__button {
+    right: 180px;
+  }
+}
+
+.badge {
+  position: absolute;
+  right: -6px;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.2em;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background: #C5776B;
+  line-height: 20px;
+}
+
+.header__alerts {
+  position: absolute;
+  width: 100%;
+  top: 140px;
+  -webkit-box-shadow: 2px 1px 10px #000000;
+          box-shadow: 2px 1px 10px #000000;
+  background: #F7ECE5;
+  z-index: 999;
+  display: none;
+}
+
+@media only screen and (min-width: 760px) {
+  .header__alerts {
+    width: 50%;
+    right: 0;
+    top: 80px;
+    background: #ffffff;
+  }
+}
+
+.header__alerts.open {
+  display: block;
+}
+
+.header__alerts #clear__alerts {
+  position: relative;
+  margin: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.header__alerts .alerts__list {
+  list-style: none;
+  font-size: 1.5em;
+  padding: 0;
+  text-align: left;
+}
+
+.header__alerts .alerts__list .alerts__item {
+  border-bottom: 1px solid lightgrey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header__alerts .alerts__list .alerts__item:hover {
+  background-color: #590606;
+}
+
+.header__alerts .alerts__list .alerts__item:hover .alerts__item__inner {
+  color: #ffffff;
+}
+
+.header__alerts .alerts__list .alerts__item .alerts__item__inner {
+  padding-left: 10px;
+  width: 100%;
+}
+
+.header__alerts .alerts__list .alerts__item .alerts__item__inner:hover {
+  text-decoration: none;
+}
+
+.header__alerts .alerts__list .alerts__item .alerts__item__inner .alert__title {
+  text-transform: capitalize;
+}
+
 .row > .column {
   padding: 0 8px;
 }
@@ -246,18 +403,66 @@ img.hover-shadow {
 }
 
 #days {
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
   background-color: #590606;
 }
 
 #hours {
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
   background-color: #153230;
 }
 
 #minutes {
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
   background-color: #C98448;
 }
 
 #seconds {
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
   background-color: #C5776B;
 }
 
@@ -479,16 +684,23 @@ body.not-index .page-title {
 
 .header .logo {
   font-family: "Anton", arial, sans-serif;
-  font-size: 1.2em;
+  font-size: 2em;
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: #C5776B;
   -webkit-text-fill-color: transparent;
   padding: 6px;
-  margin: 36px;
+  margin: 36px auto;
   outline-offset: 6px;
   display: block;
-  max-width: 130px;
+  max-width: 170px;
   text-align: center;
+}
+
+@media only screen and (min-width: 760px) {
+  .header .logo {
+    margin: 36px;
+    margin-left: 200px;
+  }
 }
 
 .header .logo:hover {
@@ -497,14 +709,22 @@ body.not-index .page-title {
 
 .header .header__menu {
   position: absolute;
-  width: 100%;
   max-width: 640px;
   margin: auto 0 0 auto;
-  top: 140px;
   background-color: #F7ECE5;
   z-index: 99;
   right: 0;
   display: none;
+}
+
+@media (max-width: 759px) {
+  .header .header__menu {
+    position: absolute;
+    width: 100%;
+    top: 140px;
+    -webkit-box-shadow: 2px 1px 10px #000000;
+            box-shadow: 2px 1px 10px #000000;
+  }
 }
 
 .header .header__menu.open {
@@ -579,16 +799,17 @@ body.not-index .page-title {
   font-size: 1.2em;
 }
 
+.header .user .user__greeting {
+  padding: 20px;
+}
+
 @media only screen and (min-width: 760px) {
   .header .user {
     position: absolute;
     left: auto;
     right: 10px;
+    margin: 20px 0;
   }
-}
-
-.header .user:hover .user__options {
-  display: block;
 }
 
 .header .user__options {
@@ -604,6 +825,10 @@ body.not-index .page-title {
     -webkit-box-shadow: 0 1px 15px #B3BFBE;
             box-shadow: 0 1px 15px #B3BFBE;
     display: none;
+    top: 50px;
+  }
+  .header .user__options.open {
+    display: block;
   }
 }
 
@@ -631,19 +856,21 @@ body.not-index .page-title {
 }
 
 .content {
-  max-width: 1024px;
+  max-width: 1280px;
   width: calc(100% - 2em);
   margin: 0 auto;
   padding: 1em;
   -webkit-box-shadow: 0 1px 15px #B3BFBE;
           box-shadow: 0 1px 15px #B3BFBE;
   background-color: #ffffff;
+  position: relative;
 }
 
 @media only screen and (min-width: 760px) {
   .content {
     padding: 3em;
     width: calc(100% - 6em);
+    z-index: 100;
   }
 }
 
@@ -847,8 +1074,6 @@ body.not-index .page-title {
 .index .homepage__content #countdown {
   -webkit-animation-name: countdown-slidein;
           animation-name: countdown-slidein;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
   -webkit-animation-duration: 2s;
           animation-duration: 2s;
 }

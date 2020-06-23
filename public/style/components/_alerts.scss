@@ -1,0 +1,79 @@
+.alerts__button {
+    z-index: 999;
+    position: absolute;
+    margin: 10px;
+    color: $pink;
+    font-size: 2em;
+    cursor: pointer;
+
+    @include respond-to($vp-mid){
+        right: 180px;
+    }
+ }
+
+ .badge {
+    position: absolute;
+    right: -6px;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.2em;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: $pink;
+    line-height: 20px;
+}
+
+.header__alerts {
+    @include mobile-popout;
+    background: $off-white;
+    z-index: 999;
+    display: none;
+
+    @include respond-to($vp-mid){
+        width: 50%;
+        right: 0;
+        top: 80px;
+        background: $white;
+    }
+
+    &.open {
+        display: block;
+    }
+
+    #clear__alerts {
+        position: relative;
+        margin: 10px;
+        top: 5px;
+        cursor: pointer;
+    }
+
+    .alerts__list {
+        list-style: none;
+        font-size: 1.5em;
+        padding: 0;
+        text-align: left;
+
+        .alerts__item {
+            border-bottom: 1px solid lightgrey;
+            display: flex;
+
+            &:hover {
+                background-color: $burgundy;
+                .alerts__item__inner { color: $white; }
+            }
+            .alerts__item__inner {
+                padding-left: 10px;
+                width: 100%;
+                &:hover { text-decoration: none;}
+
+                .alert__title {
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+
+}
+

@@ -1,6 +1,7 @@
 const multer = require('multer');
 const mongoose = require('mongoose');
 const Blog = mongoose.model('Blog');
+const User = mongoose.model('User');
 const jimp = require('jimp');
 const uuid = require('uuid');
 // const slug = require('slugs');
@@ -17,6 +18,14 @@ const multerOptions = {
 	}
 };
 
+const pushAlert = async (blog) => {
+	const users = await User.find();
+	users.forEach(user => {
+		user.alerts.push({ type: 'update', slug: blog.slug });
+		user.save();
+	});
+};
+
 exports.getBlogs = async (req, res) => {
 	const blogs = await Blog.find().sort([['created', -1]]);
 	res.render('blogs', { title: 'Updates', blogs });
@@ -28,6 +37,7 @@ exports.addBlog = (req, res) => {
 
 exports.getBlog = async (req, res) => {
 	const blog = await Blog.findOne({ slug: req.params.slug });
+	
 	res.render('blog', { title: blog.title, blog });
 };
 
@@ -61,6 +71,7 @@ exports.createBlog = async (req, res) => {
 	await blog.save();
 	req.flash('success', `Successfully Posted Update "${blog.title}".`);
 	res.redirect(`/updates/${blog.slug}`);
+	pushAlert(blog);
 };
 
 exports.editBlog = async (req, res) => {

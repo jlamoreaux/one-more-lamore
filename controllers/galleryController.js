@@ -1,6 +1,7 @@
 const multer = require('multer');
 const mongoose = require('mongoose');
 const Gallery = mongoose.model('Gallery');
+const User = mongoose.model('User');
 const jimp = require('jimp');
 const uuid = require('uuid');
 const slug = require('slugs');
@@ -15,6 +16,14 @@ const multerOptions = {
             next({ message: 'That file type isn\'t allowed!' }, false);
         }
     }
+};
+
+const pushAlert = async (gallery) => {
+  const users = await User.find();
+  users.forEach((user) => {
+    user.alerts.push({ type: 'gallery', slug: gallery.slug });
+    user.save();
+  });
 };
 
 exports.splashpage = (req, res) => {
@@ -75,6 +84,7 @@ exports.createGallery = async (req, res) => {
     await gallery.save();
     req.flash('success', `Successfully Created Gallery "${gallery.name}".`);
     res.redirect(`/gallery/${gallery.slug}`);
+    pushAlert(gallery);
 };
 
 exports.updateGallery = (req, res) => {

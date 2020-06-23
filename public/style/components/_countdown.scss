@@ -24,17 +24,21 @@
 }
 
 #days {
+    @include bounce(0);
     background-color: $burgundy;
 }
 
 #hours {
+    @include bounce(.25s);
     background-color: $green;
 }
 
 #minutes {
+    @include bounce(.5s);
     background-color: $orange;
 }
 
 #seconds {
+    @include bounce(.75s);
     background-color: $pink;
 }
