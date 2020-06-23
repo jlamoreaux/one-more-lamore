@@ -22,4 +22,6 @@ exports.menu = [
     { slug: '/registry', title: 'Registry', icon: 'gift', },
 ];
 
+exports.googleTag = process.env.GTAG;
+
 exports.tags = ['Jordan', 'Penny', 'Eisley', 'Meetings & Assemblies'];
