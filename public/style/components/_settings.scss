@@ -11,14 +11,14 @@ $blush:         #DBC9C3;
 $sunset:        #B6704f;
 $pink:          #C5776B;
 $grey:          #B3BFBE;
-$gray:          $grey;
+$gray:          $grey;  // Because I can never spell "grey" consistantly.
 $black:         #000000;
 
-$primary-color:         $burgundy;
-$secondary-color:       $sunset;
+$primary-color:         $off-white;
+$secondary-color:       $burgundy;
 
-$color-on-primary:      $off-white;
-$color-on-secondary:    $grey;
+$color-on-primary:      $sunset;
+$color-on-secondary:    $white;
 
 /* Fonts */
 $primary-font:      'Amatic SC', cursive;

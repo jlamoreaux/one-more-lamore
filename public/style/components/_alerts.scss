@@ -1,13 +1,18 @@
 .alerts__button {
     z-index: 999;
     position: absolute;
-    margin: 10px;
-    color: $pink;
+    margin: auto 10px;
+    // color: $pink;
     font-size: 2em;
     cursor: pointer;
+    top: 10px;
+    left: 10px;
 
     @include respond-to($vp-mid){
-        right: 180px;
+        // right: 180px;
+        position: relative;
+        top: 0;
+        left: 0;
     }
  }
 
