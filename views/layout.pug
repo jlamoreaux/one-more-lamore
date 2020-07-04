@@ -52,6 +52,7 @@ html
                 .user
                   a(onClick="showMenu('#user__options')")
                     span.user__greeting Hello, #{user.firstName}
+                    i(class="fa fa-caret-down" aria-hidden="true")
                   .user__options(id='user__options')
                     ul.user__options__list
                       li

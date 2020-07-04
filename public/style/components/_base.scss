@@ -36,7 +36,8 @@ body {
         background: url('/images/home_bg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position-x: center;
+        background-position-y: 136px;
 
         .content__container {
             box-shadow: none;
@@ -115,7 +116,7 @@ body {
         // margin: auto 0 0 auto;
         // height: 100%;
         background-color: $off-white;
-        z-index: 99;
+        z-index: 101;
         // right: 0;
 
         // Redesign:
@@ -180,7 +181,8 @@ body {
     }
 
     .user__options {
-        display: block;
+        // display: block;
+        display: none;
 
         @include respond-to($vp-mid) {
             right: 0;
@@ -190,10 +192,10 @@ body {
             box-shadow: 0 1px 15px $grey;
             display: none;
             top: 50px;
+        }
 
-            &.open {
-                display: block;
-            }
+        &.open {
+            display: block;
         }
 
 
