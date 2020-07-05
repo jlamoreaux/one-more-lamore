@@ -50,11 +50,12 @@ exports.getGallery = async (req, res) => {
 
 exports.upload = multer({ multerOptions }).array('photos', 40);
 
-exports.resize = async (req, res, next) => {
+const resize = async (req, res) => {
+    console.log('begining to resize images');
     // Check if there is no new file to resize
     if (!req.files) {
         console.log('No new file');
-        next();
+        // next();
         return;
     }
 
@@ -72,18 +73,23 @@ exports.resize = async (req, res, next) => {
         await photos.resize(800, jimp.AUTO);
 
         await photos.write(`./public/gallery-images/${slug(req.body.name)}/${req.body.photos[i]}`);
+        console.log('Image resized and written to disk');
         i++;
     });
 
-    next();
+    // next();
 };
 
 exports.createGallery = async (req, res) => {
     // TODO: Upload photos and create gallery
     const gallery = await(new Gallery(req.body)).save();
     await gallery.save();
-    req.flash('success', `Successfully Created Gallery "${gallery.name}".`);
+    req.flash('success', `Successfully Created Gallery "${gallery.name}". Please check back in a few moments to view photos.`);
     res.redirect(`/gallery/${gallery.slug}`);
+    resize(req, res);
+    await gallery.update({
+        photos: req.body.photos
+    });
     pushAlert(gallery);
 };
 
