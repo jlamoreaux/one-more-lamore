@@ -39,7 +39,8 @@ html
         .header__container
           a(class="logo" href="/home") #{h.siteName}
           .header__links
-            - const isAlerts = user.alerts && user.alerts.length
+            if user
+              - const isAlerts = user.alerts && user.alerts.length
             a.nav__button(onClick="showMenu('#header__menu')")
               i.fa.fa-bars
             .header__menu#header__menu
