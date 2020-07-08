@@ -818,6 +818,7 @@ body.home .content__container .homepage__content {
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
     top: 140px;
+    z-index: 99;
   }
 }
 
