@@ -24,8 +24,8 @@ router.get('/gallery/:slug', authController.isActive, catchErrors(galleryControl
 router.post('/gallery/add',
 	authController.isAdmin,
 	galleryController.upload,
-    catchErrors(galleryController.createGallery),
-    // catchErrors(galleryController.resize)
+    catchErrors(galleryController.resize),
+    catchErrors(galleryController.createGallery)
 );
 router.post('/gallery/update/:slug',
 	authController.isAdmin,

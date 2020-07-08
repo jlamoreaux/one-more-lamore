@@ -2,12 +2,13 @@ const multer = require('multer');
 const mongoose = require('mongoose');
 const Gallery = mongoose.model('Gallery');
 const User = mongoose.model('User');
-const jimp = require('jimp');
 const uuid = require('uuid');
 const slug = require('slugs');
+const sharp = require('sharp');
+const fs = require('fs');
 
 const multerOptions = {
-    // storage: multer.memoryStorage(),
+    storage: multer.memoryStorage(),
     fileFilter(req, file, next) {
         const isPhoto = file.mimetype.startsWith('image/');
         if (isPhoto) {
@@ -50,7 +51,7 @@ exports.getGallery = async (req, res) => {
 
 exports.upload = multer({ multerOptions }).array('photos', 40);
 
-const resize = async (req, res) => {
+exports.resize = async (req, res, next) => {
     console.log('begining to resize images');
     // Check if there is no new file to resize
     if (!req.files) {
@@ -59,47 +60,37 @@ const resize = async (req, res) => {
         return;
     }
 
-    // Get File Type & Rename
-    let i = 0;
-
     req.body.photos = [];
-    req.files.forEach(async function (file) {
+    if (fs.existsSync(`./public/gallery-images/${slug(req.body.name)}`)) {
+      console.log('Folder Exists');
+    } else {
+      fs.mkdirSync(`./public/gallery-images/${slug(req.body.name)}`);
+    }
 
-        let extension = file.mimetype.split('/')[1];
-        req.body.photos.push(`${uuid.v4()}.${extension}`);
-        // Resize the image
-        let photos = await jimp.read(file.buffer);
+    await Promise.all(
+        req.files.map(async file => {
+            let extension = file.mimetype.split('/')[1];
+            let fileName = `${uuid.v4()}.${extension}`;
+            req.body.photos.push(fileName);
+            await sharp(file.buffer)
+                .resize(800)
+                .toFormat('jpeg')
+                .jpeg({ quality: 90 })
+                .toFile(`./public/gallery-images/${slug(req.body.name)}/${fileName}`);
+        })
+    );
 
-        await photos.resize(800, jimp.AUTO);
-
-        await photos.write(`./public/gallery-images/${slug(req.body.name)}/${req.body.photos[i]}`);
-        console.log('Image resized and written to disk');
-        i++;
-    });
-
-    // next();
+    next();
 };
 
 exports.createGallery = async (req, res) => {
-    // TODO: Upload photos and create gallery
     const gallery = await(new Gallery(req.body)).save();
     await gallery.save();
     req.flash('success', `Successfully Created Gallery "${gallery.name}". Please check back in a few moments to view photos.`);
     res.redirect(`/gallery/${gallery.slug}`);
-    resize(req, res);
-    await gallery.update({
-        photos: req.body.photos
-    });
     pushAlert(gallery);
 };
 
 exports.updateGallery = (req, res) => {
-    // const gallery = await Gallery.findOneAndUpdate({ slug: req.params.slug });
     // TODO: Update gallery
 };
-
-// const photoResize = async (file, req) => {
-//     let photo = await jimp.read(file.buffer);
-//     await photo.resize(800, jimp.AUTO);
-//     await photo.write(`./public/gallery/${req.body.name}/${photo}`);
-// }
