@@ -31,8 +31,10 @@ function ready(fn) {
   }
 }
 
+
+// Automatically open any external link in a new window
 // Courtesy of https://robwise.github.io/blog/javascript-external-links-open-new-window
-ready(function() {
+ready(function () {
 
     var website = window.location.hostname;
     console.log(website);
@@ -53,6 +55,8 @@ ready(function() {
     }
   }
 });
+
+
 
 const showMenu = (elem) => {
   // if (currentOpenMenu.classList) {
