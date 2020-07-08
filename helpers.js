@@ -19,7 +19,7 @@ exports.siteName = 'One More Lamore(aux)';
 exports.menu = [
     { slug: '/gallery', title: 'Gallery', icon: 'photo', },
     { slug: '/updates', title: 'Updates', icon: 'stories', },
-    { slug: '/registry', title: 'Registry', icon: 'gift', },
+    { slug: 'https://www.babylist.com/penny-jordan-lamoreaux', title: 'Registry', icon: 'gift', },
 ];
 
 exports.googleTag = process.env.GTAG;
