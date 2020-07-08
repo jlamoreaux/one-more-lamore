@@ -134,6 +134,7 @@ body {
             @include flex(row);
             // position: relative;
             top: 140px;
+            z-index: 99;
         }
     }
 
