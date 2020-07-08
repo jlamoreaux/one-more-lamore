@@ -49,7 +49,7 @@ exports.getGallery = async (req, res) => {
     res.render('gallery', { title: gallery.name, gallery });
 };
 
-exports.upload = multer({ multerOptions }).array('photos', 40);
+exports.upload = multer({ multerOptions }).array('photos', 200);
 
 exports.resize = async (req, res, next) => {
     console.log('begining to resize images');
