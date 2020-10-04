@@ -5,3 +5,4 @@ mixin accountForm()
         input#last_name(type='textbox' name='lastname' value=`${user ? user.lastName : ''}`)
         label.login-label(for='email') Email Address
         input#email(type='textbox' name='email' value=`${user ? user.email : ''}`)
+        a.update__password(href="/account/password") Click Here to Update Password

@@ -39,6 +39,27 @@ html
         .header__container
           a(class="logo" href="/home") #{h.siteName}
           .header__links
+            if user
+              - const isAlerts = user.alerts && user.alerts.length
+              a.alerts__button(onClick="showMenu('#header__alerts')")
+                i(class='fa fa-bell-o' aria-hidden="true" id='alerts__icon')
+                if isAlerts
+                  span.badge(id='alert__badge')=user.alerts.length
+              .header__alerts#header__alerts
+                  if isAlerts
+                    a#clear__alerts(onClick='clearAlerts()') Clear Alerts
+                  if user
+                    .alerts
+                      ul.alerts__list(id='alerts__list')
+                        if isAlerts
+                          each alert in user.alerts
+                            li.alerts__item
+                              - const title = alert.slug.replace(/-/g, ' ')
+                              a.alerts__item__inner(href=`/${alert.type}${alert.type == 'update' ? 's' : ''}/${alert.slug}`) NEW #{alert.type.toUpperCase()}: 
+                                span.alert__title "#{title}"
+                        else 
+                          li.alerts__item
+                            span.alerts__item__inner No New Alerts
             a.nav__button(onClick="showMenu('#header__menu')")
               i.fa.fa-bars
             .header__menu#header__menu
@@ -48,7 +69,6 @@ html
                         li.nav__item
                             +link(item.title, item.slug )(class= 'nav-link')
               if user
-                - const isAlerts = user.alerts && user.alerts.length
                 .user
                   a(onClick="showMenu('#user__options')")
                     span.user__greeting Hello, #{user.firstName}
@@ -59,25 +79,6 @@ html
                         a(href="/account") Account
                       li
                         a(href="/logout") Logout
-                a.alerts__button(onClick="showMenu('#header__alerts')")
-                  i(class='fa fa-bell-o' aria-hidden="true" id='alerts__icon')
-                  if isAlerts
-                    span.badge(id='alert__badge')=user.alerts.length
-                .header__alerts#header__alerts
-                    if isAlerts
-                      a#clear__alerts(onClick='clearAlerts()') Clear Alerts
-                    if user
-                      .alerts
-                        ul.alerts__list(id='alerts__list')
-                          if isAlerts
-                            each alert in user.alerts
-                              li.alerts__item
-                                - const title = alert.slug.replace(/-/g, ' ')
-                                a.alerts__item__inner(href=`/${alert.type}${alert.type == 'update' ? 's' : ''}/${alert.slug}`) NEW #{alert.type.toUpperCase()}: 
-                                  span.alert__title "#{title}"
-                          else 
-                            li.alerts__item
-                              span.alerts__item__inner No New Alerts
 
       main.content(class=mainClass)
         .content__container

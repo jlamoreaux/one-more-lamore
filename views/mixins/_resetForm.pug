@@ -1,0 +1,6 @@
+mixin resetForm()
+        label.login-label(for="password") Password
+        input#password(type="password" oninput='validPW()' name='password')
+        span#pw_alert
+        label.login-label(for="pwconfirm") Confirm Password
+        input#pwconfirm(type="password" oninput='pwIsSame()' name='pwconfirm')
