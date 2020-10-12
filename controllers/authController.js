@@ -84,7 +84,7 @@ exports.sendResetLink = async (req, res, next) => {
     await user.save();
     if (user) {
       console.log(user.firstName);
-      const resetURL = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
+      const resetURL = `http://${req.hostname}/account/reset/${user.resetPasswordToken}`;
       await mail.send({
         recipient: req.body.email,
         subject: 'Password Reset Link',
