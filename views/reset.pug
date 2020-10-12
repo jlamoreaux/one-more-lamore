@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_resetForm
+
+block layout-content
+  div.View
+    //- h1.Banner Sign Up
+
+    form.form.login-form(method="post")
+        +resetForm
+
+        input#submit_button(type="submit" value='Submit')
+
+    script(src='/js/register.js')

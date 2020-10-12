@@ -35,7 +35,9 @@ const userSchema = new Schema({
 	isAdmin: {
 		type: Boolean,
 		default: false
-	}
+	},
+	resetPasswordToken: String,
+    resetPasswordExpires: Date,
 });
 
 // // generating a hash

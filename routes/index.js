@@ -85,6 +85,18 @@ router.post('/register',
     authController.login
 );
 
+router.get('/forgotpassword', authController.forgotForm);
+router.post('/pwreset', authController.sendResetLink);
+
+router.get('/account/password', authController.passwordForm);
+router.post('/account/password', authController.confirmedPasswords, catchErrors(authController.update));
+
+router.get('/account/reset/:token', catchErrors(authController.resetPassword));
+router.post('/account/reset/:token',
+    authController.confirmedPasswords,
+    catchErrors(authController.checkToken),
+    catchErrors(authController.update));
+
 
 /*
     Other Routes

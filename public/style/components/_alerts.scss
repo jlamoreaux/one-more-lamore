@@ -31,7 +31,7 @@
 }
 
 .header__alerts {
-    @include mobile-popout;
+    @include header-dropdown;
     background: $off-white;
     z-index: 999;
     display: none;
@@ -39,7 +39,7 @@
     @include respond-to($vp-mid){
         width: 50%;
         right: 0;
-        top: 80px;
+        top: 100px;
         background: $white;
     }
 
@@ -56,7 +56,7 @@
 
     .alerts__list {
         list-style: none;
-        font-size: 1.5em;
+        font-size: 1.2em;
         padding: 0;
         text-align: left;
 
