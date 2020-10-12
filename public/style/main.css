@@ -130,7 +130,6 @@
     Individual Components
 */
 .alerts__button {
-  z-index: 999;
   position: absolute;
   margin: auto 10px;
   font-size: 2em;
@@ -752,7 +751,6 @@ body.home .content__container .homepage__content {
       flex-wrap: nowrap;
   width: 100%;
   position: absolute;
-  z-index: 999;
 }
 
 @media only screen and (min-width: 760px) {
