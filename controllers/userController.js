@@ -63,7 +63,7 @@ exports.register = async (req, res, next) => {
         req.flash('error', e.message);
         res.redirect(backURL);
     }
-    const activateURL = `http://${req.headers.host}/account/activate/${user._id}`;
+    const activateURL = `http://${req.hostname}/account/activate/${user._id}`;
     await mail.send({
         recipient: process.env.WEBMASTER,
         subject: 'New User Registration',
