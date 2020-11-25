@@ -101,7 +101,7 @@ body {
         @include flex($justify-content: space-around, $direction: row-reverse);
         width: 100%;
         position: absolute;
-        z-index: 999;
+        // z-index: 999;
 
         @include respond-to($vp-mid) {
             position: relative;
