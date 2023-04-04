@@ -33,7 +33,7 @@
     "express-session": "^1.17.0",
     "express-validator": "^6.15.0",
     "html-to-text": "^5.1.1",
-    "jimp": "^0.10.3",
+    "jimp": "^0.22.7",
     "juice": "^6.0.0",
     "mkdirp": "^1.0.4",
     "moment": "^2.29.4",
